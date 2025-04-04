@@ -4,6 +4,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import userRouter from "./routes/user.route.js";
+import postRouter from "./routes/post.route.js";
 import ngoRouter from './routes/ngo.route.js';
 
 const app = express();
@@ -24,6 +25,8 @@ app.use(cookieParser());
 
 app.use("/api/v1/user",userRouter);
 app.use("/api/v1/ngo",ngoRouter);
+app.use("/api/v1/post",postRouter);
+
 
 app.use("/api/v1/check", async (req, res) => {
   console.log("working");
