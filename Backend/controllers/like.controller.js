@@ -32,7 +32,7 @@ const toggleLike = asyncHandler(async (req, res) => {
 });
 
 const getLikes = asyncHandler(async (req, res) => {
-  const { post_id } = req.body;
+  const { post_id } = req.params;
 
   if (!post_id) {
     throw new ApiError(400, "Post ID is required");
@@ -43,4 +43,32 @@ const getLikes = asyncHandler(async (req, res) => {
   res.json(new ApiResponse(200, likes, "likes"));
 });
 
-export { toggleLike, getLikes };
+const getLikesCount = asyncHandler(async (req, res) => {
+  const { post_id } = req.params;
+
+  if (!post_id) {
+    throw new ApiError(400, "Post ID is required");
+  }
+
+  const likesCount = await Like.countDocuments({ post_id });
+
+  res.json(new ApiResponse(200, likesCount, "likes count"));
+});
+
+const isLiked = asyncHandler(async (req, res) => {
+  const { post_id } = req.params;
+
+  if (!post_id) {
+    throw new ApiError(400, "Post ID is required");
+  }
+
+  const existingLike = await Like.findOne({
+    post_id,
+    user_name: req.user.user_name,
+  });
+
+  res.json(new ApiResponse(200, existingLike ? true : false, "likes"));
+}
+);
+
+export { toggleLike, getLikes, getLikesCount, isLiked };
