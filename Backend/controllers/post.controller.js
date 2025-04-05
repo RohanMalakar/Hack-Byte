@@ -44,10 +44,12 @@ const createPost = async (req, res) => {
     
 
     for(let i=0;i<tag.length;i++){
+        post.tag.push(tag[i]);
         await Tag.create({
             post_id: post._id,
             tag: tag[i],
         });
+
         const ngo=await NGO.findOne({ngo_id:tag[i]});
         if(!ngo){
             throw new ApiError(404,"ngo not found please tag a right ngo")
@@ -85,7 +87,6 @@ const getAllPosts = async (req, res) => {
     if (!posts) {
         throw new ApiError(404, "Posts not found");
     }
-
     res.json(new ApiResponse(200, posts, "Posts retrieved successfully"));
 }
 
