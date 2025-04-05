@@ -11,6 +11,7 @@ import Partners from './pages/Partners';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Posts from './pages/Posts';
+import Login from './pages/Login';
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/posts" element={<Posts />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
       </div>
