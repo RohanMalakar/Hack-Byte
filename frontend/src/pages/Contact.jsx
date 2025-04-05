@@ -136,7 +136,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-50 to-brown-50 px-4 py-16">
+    <div className="min-h-screen bg-indigo-50 px-4 py-16">
       <div className="max-w-6xl mx-auto">
         {/* Hero Section */}
         <motion.div 
@@ -145,7 +145,7 @@ const Contact = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-orange-800 mb-6 relative inline-block">
+          <h1 className="text-4xl md:text-5xl font-bold text-rose-800 mb-6 relative inline-block">
             Hey!! Don't Panic, You're Strong!!
             <motion.div 
               className="absolute -right-10 -top-10"
@@ -157,10 +157,10 @@ const Contact = () => {
             </motion.div>
           </h1>
           
-          <h2 className="text-2xl md:text-3xl text-orange-700 mb-8">Got a Question? Feedback?</h2>
+          <h2 className="text-2xl md:text-3xl text-rose-700 mb-8">Got a Question? Feedback?</h2>
           
           <motion.div
-            className="inline-block bg-gradient-to-r from-orange-800 to-orange-700 rounded-full px-8 py-4 text-white text-xl font-semibold shadow-lg"
+            className="inline-block bg-gradient-to-r from-rose-800 to-rose-700 rounded-full px-8 py-4 text-white text-xl font-semibold shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
             initial={{ scale: 0.9, opacity: 0 }}
@@ -207,7 +207,7 @@ const Contact = () => {
           >
             <div className="flex flex-col md:flex-row">
               {/* Left Side - Accent Area */}
-              <div className="bg-gradient-to-br from-orange-300 to-orange-300 md:w-1/3 p-8 text-white flex flex-col justify-between">
+              <div className="bg-gradient-to-br from-rose-300 to-rose-300 md:w-1/3 p-8 text-white flex flex-col justify-between">
                 <div>
                   <h3 className="text-2xl font-bold mb-6">Connect With Us</h3>
                   <p className="mb-10">We're here to listen and help. Share your thoughts, concerns, or just say hello!</p>
@@ -255,7 +255,7 @@ const Contact = () => {
                     {/* Name Input */}
                     <motion.div className="mb-6" variants={itemVariants}>
                       <label className="block text-gray-700 font-medium mb-2 flex items-center">
-                        <User className="mr-2 text-orange-800" size={18} />
+                        <User className="mr-2 text-rose-800" size={18} />
                         Your Name
                       </label>
                       <input
@@ -274,7 +274,7 @@ const Contact = () => {
                     {/* Email Input */}
                     <motion.div className="mb-6" variants={itemVariants}>
                       <label className="block text-gray-700 font-medium mb-2 flex items-center">
-                        <Mail className="mr-2 text-orange-800" size={18} />
+                        <Mail className="mr-2 text-rose-800" size={18} />
                         Email Address
                       </label>
                       <input
@@ -293,7 +293,7 @@ const Contact = () => {
                     {/* Message Input */}
                     <motion.div className="mb-8" variants={itemVariants}>
                       <label className="block text-gray-700 font-medium mb-2 flex items-center">
-                        <MessageSquare className="mr-2 text-orange-800" size={18} />
+                        <MessageSquare className="mr-2 text-rose-800" size={18} />
                         Your Message
                       </label>
                       <textarea
@@ -313,7 +313,7 @@ const Contact = () => {
                     <motion.button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-orange-300 to-orange-300 text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center disabled:opacity-70 transition duration-300 shadow-md hover:shadow-lg"
+                      className="w-full bg-gradient-to-r from-orange-300 to-rose-300 text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center disabled:opacity-70 transition duration-300 shadow-md hover:shadow-lg"
                       variants={buttonVariants}
                       whileHover="hover"
                       whileTap="tap"

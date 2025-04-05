@@ -53,7 +53,7 @@ const Steps2 = () => {
   return (
     <div className="w-full flex flex-col items-center px-6 py-8 bg-slate-180">
       <motion.h3
-        className="text-3xl font-bold text-[#7A2F46] mb-10"
+        className="text-3xl font-bold text-rose-800 mb-10"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

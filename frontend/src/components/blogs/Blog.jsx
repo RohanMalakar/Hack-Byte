@@ -81,9 +81,9 @@ const BlogSection = () => {
 
   return (
     <section>
-      <div className="max-w-6xl mx-auto px-4 py-12">
+      <div className="max-w-6xl mx-auto px-4 py-12 bg-indigo-50">
         <motion.h2 
-          className="text-4xl font-bold text-center mb-12"
+          className="text-4xl font-bold text-center mb-12 text-rose-800"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -117,7 +117,7 @@ const BlogSection = () => {
                 
                 {/* Genre Badge */}
                 <motion.span 
-                  className="absolute top-4 left-4 bg-indigo-600 text-white text-xs font-medium px-3 py-1 rounded-full"
+                  className="absolute top-4 left-4 bg-rose-400 text-white text-xs font-medium px-3 py-1 rounded-full"
                   whileHover={{ scale: 1.05 }}
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
@@ -143,7 +143,7 @@ const BlogSection = () => {
                   </motion.span>
                   
                   <motion.button
-                    className="flex items-center text-indigo-600 font-medium text-sm group"
+                    className="flex items-center text-rose-400 font-medium text-sm group"
                     whileHover={{ scale: 1.05 }}
                   >
                     View More

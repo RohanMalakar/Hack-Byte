@@ -51,7 +51,7 @@ const AboutUs = () => {
   ];
 
   return (
-    <div className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-indigo-50">
       {/* What is Sahayak Section */}
       <motion.div 
         className="text-center mb-16"
@@ -61,7 +61,7 @@ const AboutUs = () => {
         variants={fadeIn}
       >
         <motion.h2 
-          className="text-3xl font-bold text-gray-900 sm:text-4xl mb-6"
+          className="text-3xl font-bold text-rose-00 sm:text-4xl mb-6"
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
