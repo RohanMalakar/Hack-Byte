@@ -20,33 +20,36 @@ function Login() {
 
   async function OnLogin(e) {
     e.preventDefault();
-
+  
     const { user_name, password } = LoginData;
-
+  
     if (!user_name || !password) {
       alert("Every field is required");
       return;
     }
-
+  
     try {
       const response = await axiosInstance.post("/user/login", LoginData);
       const data = response.data;
 
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("name", data.user?.name || "");
-
+      localStorage.setItem("name", data.data?.name || "");
+  
+      // ✅ Set user type
+      localStorage.setItem("userType", "user");
+  
       alert("Login successful");
       navigate("/");
     } catch (err) {
       const msg = err.response?.data?.message || "Login failed";
       alert(msg);
     }
-
+  
     setLoginData({
       user_name: "",
       password: "",
     });
   }
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-[#7A2F46] to-[#9F425E] p-4">
