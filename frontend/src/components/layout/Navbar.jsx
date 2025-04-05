@@ -93,7 +93,7 @@ const FeminineNavbar = () => {
           <div className="hidden md:flex md:items-center">
             {userType ? (
               <span className="text-sm font-semibold text-rose-800" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                {userType === 'user' && `Hi, ${userName}`}
+                {userType === 'user' && Hi, ${userName}}
               </span>
             ) : (
               <>
