@@ -118,13 +118,13 @@ const PostForm = ({ editPost = null, onSubmit }) => {
 
   return (
     <motion.div 
-      className="w-full max-w-3xl mx-auto p-6 bg-white rounded-xl shadow-lg"
+      className="w-full max-w-3xl mx-auto p-6 bg-gradient-to-r from-rose-50 to-slate-50 rounded-xl shadow-lg"
       initial="hidden"
       animate="visible"
       variants={formVariants}
     >
       <motion.h2 
-        className="text-2xl font-bold text-pink-500 mb-6 text-center"
+        className="text-2xl font-bold text-rose-600 mb-6 text-center"
         variants={itemVariants}
       >
         {editPost ? 'Edit Post' : 'Create New Post'}
@@ -142,7 +142,7 @@ const PostForm = ({ editPost = null, onSubmit }) => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
-            className="w-full px-4 py-2 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300 transition"
+            className="w-full px-4 py-2 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-300 transition"
             placeholder="What's the issue about?"
           />
         </motion.div>
@@ -158,7 +158,7 @@ const PostForm = ({ editPost = null, onSubmit }) => {
             onChange={(e) => setDescription(e.target.value)}
             required
             rows="4"
-            className="w-full px-4 py-2 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300 transition"
+            className="w-full px-4 py-2 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-300 transition"
             placeholder="Describe the issue in detail..."
           />
         </motion.div>
@@ -166,7 +166,7 @@ const PostForm = ({ editPost = null, onSubmit }) => {
         {/* Location */}
         <motion.div className="mb-4" variants={itemVariants}>
           <label htmlFor="location" className="block text-gray-700 font-medium mb-2 flex items-center">
-            <MapPin className="mr-2 text-pink-500" size={18} />
+            <MapPin className="mr-2 text-rose-600" size={18} />
             Location
           </label>
           <input
@@ -174,7 +174,7 @@ const PostForm = ({ editPost = null, onSubmit }) => {
             type="text"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="w-full px-4 py-2 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300 transition"
+            className="w-full px-4 py-2 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-300 transition"
             placeholder="Enter location or use map"
           />
           <div className="mt-2 bg-gray-100 h-40 rounded-lg flex items-center justify-center text-gray-400">
@@ -185,7 +185,7 @@ const PostForm = ({ editPost = null, onSubmit }) => {
         {/* Issue Types */}
         <motion.div className="mb-4" variants={itemVariants}>
           <label className="block text-gray-700 font-medium mb-2 flex items-center">
-            <Tag className="mr-2 text-pink-500" size={18} />
+            <Tag className="mr-2 text-rose-600" size={18} />
             Issue Type
           </label>
           <div className="flex flex-wrap gap-2">
@@ -196,8 +196,8 @@ const PostForm = ({ editPost = null, onSubmit }) => {
                 onClick={() => toggleIssueType(type)}
                 className={`px-3 py-1 rounded-full text-sm transition-all ${
                   issueType.includes(type)
-                    ? 'bg-pink-500 text-white'
-                    : 'bg-pink-100 text-pink-600 hover:bg-pink-200'
+                    ? 'bg-rose-500 text-white'
+                    : 'bg-rose-100 text-rose-600 hover:bg-rose-200'
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -211,7 +211,7 @@ const PostForm = ({ editPost = null, onSubmit }) => {
         {/* Organization */}
         <motion.div className="mb-4" variants={itemVariants}>
           <label htmlFor="organization" className="block text-gray-700 font-medium mb-2 flex items-center">
-            <Building className="mr-2 text-pink-500" size={18} />
+            <Building className="mr-2 text-rose-500" size={18} />
             Organization
           </label>
           <input
@@ -219,7 +219,7 @@ const PostForm = ({ editPost = null, onSubmit }) => {
             type="text"
             value={organization}
             onChange={(e) => setOrganization(e.target.value)}
-            className="w-full px-4 py-2 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300 transition"
+            className="w-full px-4 py-2 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-300 transition"
             placeholder="Tag relevant organization"
           />
         </motion.div>
@@ -227,19 +227,19 @@ const PostForm = ({ editPost = null, onSubmit }) => {
         {/* Image Upload */}
         <motion.div className="mb-4" variants={itemVariants}>
           <label className="block text-gray-700 font-medium mb-2 flex items-center">
-            <ImageIcon className="mr-2 text-pink-500" size={18} />
+            <ImageIcon className="mr-2 text-rose-600" size={18} />
             Upload Images
           </label>
           
           <div className="flex items-center justify-center w-full">
             <label 
-              className="flex flex-col items-center justify-center w-full h-32 border-2 border-pink-200 border-dashed rounded-lg cursor-pointer bg-pink-50 hover:bg-pink-100 transition-all"
+              className="flex flex-col items-center justify-center w-full h-32 border-2 border-rose-200 border-dashed rounded-lg cursor-pointer bg-rose-50 hover:bg-rose-100 transition-all"
               onClick={() => fileInputRef.current.click()}
             >
               <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                <ImageIcon className="w-8 h-8 mb-3 text-pink-400" />
-                <p className="mb-2 text-sm text-pink-500"><span className="font-semibold">Click to upload</span> or drag and drop</p>
-                <p className="text-xs text-pink-400">PNG, JPG or JPEG (MAX. 5MB)</p>
+                <ImageIcon className="w-8 h-8 mb-3 text-rose-400" />
+                <p className="mb-2 text-sm text-rose-600"><span className="font-semibold">Click to upload</span> or drag and drop</p>
+                <p className="text-xs text-rose-400">PNG, JPG or JPEG (MAX. 5MB)</p>
               </div>
               <input 
                 ref={fileInputRef}
@@ -288,18 +288,18 @@ const PostForm = ({ editPost = null, onSubmit }) => {
                 checked={isAnonymous}
                 onChange={() => setIsAnonymous(!isAnonymous)}
               />
-              <div className={`block w-14 h-8 rounded-full transition ${isAnonymous ? 'bg-pink-500' : 'bg-gray-300'}`}></div>
+              <div className={`block w-14 h-8 rounded-full transition ${isAnonymous ? 'bg-rose-500' : 'bg-gray-300'}`}></div>
               <div className={`absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition transform ${isAnonymous ? 'translate-x-6' : 'translate-x-0'}`}></div>
             </div>
             <div className="ml-3 flex items-center text-gray-700">
               {isAnonymous ? (
                 <>
-                  <EyeOff size={18} className="mr-1 text-pink-500" />
+                  <EyeOff size={18} className="mr-1 text-rose-500" />
                   <span>Post Anonymously</span>
                 </>
               ) : (
                 <>
-                  <Eye size={18} className="mr-1 text-pink-500" />
+                  <Eye size={18} className="mr-1 text-rose-500" />
                   <span>Post Publicly</span>
                 </>
               )}
@@ -311,7 +311,7 @@ const PostForm = ({ editPost = null, onSubmit }) => {
         <motion.div className="flex justify-center" variants={itemVariants}>
           <motion.button
             type="submit"
-            className="px-79 py-3 bg-pink-500 text-white rounded-lg font-medium shadow-md hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-opacity-50 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center"
+            className="px-79 py-3 bg-rose-500 text-white rounded-lg font-medium shadow-md hover:bg-rose-600 focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-opacity-50 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
             disabled={isSubmitting}

@@ -36,18 +36,11 @@ const Steps2 = () => {
         </div>
       )
     },
-    {
-      title: "🌍 Why This Platform Matters",
-      content: (
-        <p className="text-[#7A2F46]">
-          Women’s issues are often ignored, and safety remains a global concern. Whether it’s street harassment or online abuse, every voice matters. By raising awareness, this platform helps push for change and provides a space where support and solidarity grow stronger each day.
-        </p>
-      )
-    },
+
     {
       title: "💡 Did You Know These Rights?",
       content: (
-        <ul className="list-disc ml-6 text-[#7A2F46] space-y-1">
+        <ul className="list-disc ml-6 text-[#7A2F46] space-y-1 ">
           <li>You have the right to file an FIR at any police station in India.</li>
           <li>Section 354D of IPC protects women against cyberstalking.</li>
           <li>Workplaces must follow POSH (Prevention of Sexual Harassment) Act guidelines.</li>
@@ -58,7 +51,7 @@ const Steps2 = () => {
   ];
 
   return (
-    <div className="w-full flex flex-col items-center px-6 py-16 bg-[#e6b7c5]">
+    <div className="w-full flex flex-col items-center px-6 py-8 bg-slate-180">
       <motion.h3
         className="text-3xl font-bold text-[#7A2F46] mb-10"
         initial={{ opacity: 0, y: -20 }}
@@ -75,13 +68,13 @@ const Steps2 = () => {
           {leftSections.map((section, idx) => (
             <motion.div
               key={idx}
-              className="bg-[#f8dbe4] p-6 rounded-xl shadow-md"
+              className="bg-gradient-to-r from-rose-50 to-slate-100 p-6 rounded-xl shadow-md"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
             >
-              <h2 className="text-2xl font-semibold text-[#7A2F46] mb-2">{section.title}</h2>
+              <h2 className="text-2xl font-bold text-gray-900 sm:text-2xl mb-6">{section.title}</h2>
               <div className="text-md">{section.content}</div>
             </motion.div>
           ))}
@@ -92,9 +85,9 @@ const Steps2 = () => {
           {steps.map((step, index) => (
             <motion.div
               key={index}
-              className={`relative p-6 bg-[#cc738d] text-white rounded-xl shadow-lg transition duration-200 ease-out cursor-pointer 
+              className={`relative p-6 bg-rose-300 text-white rounded-xl shadow-lg transition duration-200 ease-out cursor-pointer 
                 ${index % 2 === 0 ? "rotate-[-2deg]" : "rotate-[2deg]"} 
-                hover:scale-105 hover:bg-[#b04a68] hover:shadow-2xl 
+                hover:scale-105 hover:bg-rose-600 hover:shadow-2xl 
                 hover:${index % 2 === 0 ? "rotate-[-1deg]" : "rotate-[1deg]"}
               `}
               initial={{ opacity: 0, x: 40 }}

@@ -19,7 +19,7 @@ const Footer = () => {
 
   return (
     <motion.footer
-      className="w-full py-6 px-4 md:px-8 bg-gradient-to-r from-gray-900 to-gray-800 text-gray-100 dark:from-gray-900 dark:to-gray-950 dark:text-gray-200"
+      className="w-full py-6 px-4 md:px-8 bg-gradient-to-r from-rose-50 to-slate-100 text-gray-100 dark:from-gray-900 dark:to-gray-950 dark:text-gray-200"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
