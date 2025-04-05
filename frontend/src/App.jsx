@@ -1,9 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import FeminineNavbar from './components/layout/Navbar';
+//import PostForm from './components/createposts/PostForm';
 import Home from './pages/Home';
-import CreatePost from './pages/Create';
-import ReadPost from './pages/Posts';
+import Post from './pages/Posts';
+import ReadPost from './pages/Read';
 import Blogs from './pages/Blogs';
 import Helplines from './pages/Helplines';
 import Partners from './pages/Partners';
@@ -18,12 +19,12 @@ const App = () => {
       <div className="h-screen flex flex-col">
         {/* Navbar */}
         <FeminineNavbar />
-        
+        {/*<PostForm />*/}
         {/* Page Content */}
-        <div className="flex-1 container mx-auto p-4">
+        <div>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/create" element={<CreatePost />} />
+            <Route path="/posts" element={<Post />} />
             <Route path="/read" element={<ReadPost />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/helplines" element={<Helplines />} />

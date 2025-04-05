@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+//import Post from './pages/Posts';
 
 const FeminineNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +12,7 @@ const FeminineNavbar = () => {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Create Post', path: '/create' },
+    { name: 'Create Post', path: '/post' },
     { name: 'Read Post', path: '/read' },
     { name: 'Read Blogs', path: '/blogs' },
     { name: 'Helplines', path: '/helplines' },
@@ -22,7 +23,7 @@ const FeminineNavbar = () => {
 
   return (
     <nav className="bg-gradient-to-r from-[#7A2F46] to-[#9F425E] shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-2">
         <div className="flex justify-between h-16">
           {/* Logo Section */}
           <motion.div 
@@ -43,8 +44,8 @@ const FeminineNavbar = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span className="ml-2 text-xl font-bold text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
-                Feminine
+              <span className="ml-2 text-xl font-bold text-white mr-10" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Sahayak
               </span>
             </div>
           </motion.div>

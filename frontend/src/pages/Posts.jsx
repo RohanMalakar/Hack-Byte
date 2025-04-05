@@ -1,4 +1,3 @@
-// pages/Posts.js
 import React, { useEffect, useState } from 'react';
 import PostCard from '../components/createposts/PostCard';
 import axiosInstance from '../helper/axiosinstance';
@@ -36,3 +35,4 @@ const Posts = () => {
 };
 
 export default Posts;
+
