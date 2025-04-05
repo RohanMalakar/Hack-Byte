@@ -89,4 +89,27 @@ const getAllPosts = async (req, res) => {
     res.json(new ApiResponse(200, posts, "Posts retrieved successfully"));
 }
 
+// const updatePost = async (req, res) => {
+//     const { post_id } = req.params;
+//     const { title, description, anonymous } = req.body;
+
+//     if (!post_id) {
+//         throw new ApiError(400, "Post ID is required");
+//     }
+
+//     const post = await Post.findById(post_id);
+//     if (!post) {
+//         throw new ApiError(404, "Post not found");
+//     }
+
+//     post.title = title || post.title;
+//     post.description = description || post.description;
+//     post.anonymous = anonymous || post.anonymous;
+//     post.updatedAt = Date.now();
+
+//     await post.save();
+
+//     res.json(new ApiResponse(200, post, "Post updated successfully"));
+// }
+
 export {createPost,getPost,getAllPosts} ;
