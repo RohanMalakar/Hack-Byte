@@ -69,11 +69,11 @@ const PostCard = ({ post }) => {
       </div>
 
       {post.media?.length > 0 && (
-        <div className="relative mb-3">
+        <div className="relative mb-3 aspect-square w-full">
           <img
             src={post.media[currentImg]}
             alt="post media"
-            className="w-full h-52 object-cover rounded-xl"
+            className="w-full h-full object-cover rounded-xl"
           />
           {post.media.length > 1 && (
             <>
@@ -92,6 +92,7 @@ const PostCard = ({ post }) => {
             </>
           )}
         </div>
+
       )}
 
       <p className="text-sm text-gray-700 truncate">{post.description}</p>

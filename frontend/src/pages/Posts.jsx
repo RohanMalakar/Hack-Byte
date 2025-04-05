@@ -7,7 +7,7 @@ const Posts = () => {
 
   async function fetchPosts() {
     try {
-      const response = await axiosInstance.post('/post/allPosts');
+      const response = await axiosInstance.get('/post/allPosts');
       setPosts(response.data.data);
     } catch (error) {
       console.error('Error fetching posts:', error);
