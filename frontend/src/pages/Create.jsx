@@ -23,6 +23,7 @@ const Create = () => {
         transition={{ duration: 0.5 }}
       >
         <p className="mt-3 text-2xl text-gray-600 font-bold">Share an issue with your community and help make a difference!!</p>
+        <p className="mt-3 text-2xl text-gray-600 font-bold">Share an issue with your community and help make a difference!!</p>
       </motion.div>
 
       {/* Success Message */}

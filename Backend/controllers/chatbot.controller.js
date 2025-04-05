@@ -1,4 +1,5 @@
 import Chatbot from '../models/chatbot.model.js';
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import { v4 as uuidv4 } from 'uuid';
 
 // Create a new chat room
@@ -51,13 +52,46 @@ export const addMessageToChat = async (req, res) => {
     const { chat_room_id } = req.params;
     const { sender, message } = req.body;
 
+    if (!sender || !message) {
+      return res.status(400).json({ message: 'Sender and message are required' });
+    }
+    let response;
+    const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
+    
     const chat = await Chatbot.findOne({ chat_room_id });
     if (!chat) return res.status(404).json({ message: 'Chat not found' });
-
     chat.messages.push({ sender, message });
     chat.updatedAt = Date.now();
-
-    await chat.save();
+    async function run() {
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" });
+    
+      try {
+        // Convert your MongoDB chat format to Gemini chat history format
+        const history = chat.messages.map((msg) => ({
+          role: msg.sender === 'user' ? 'user' : 'model',   // Map 'bot' -> 'model'
+          parts: [{ text: msg.message }]
+        }));
+    
+        // Start chat with history
+        const geminiChat = model.startChat({
+          history: history,
+        });
+    
+        // Send the new message
+        const result = await geminiChat.sendMessage(`You are an AI that must answer every question very shortly and precisely.give ans in a funny way  \n ${message}` );
+        response = await result.response;
+    
+        chat.messages.push({ sender: 'bot', message: response.text() });
+        chat.updatedAt = Date.now();
+        await chat.save();
+        console.log("Gemini Response:", response.text());
+    
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+    
+    await run();
     res.status(200).json(chat);
   } catch (err) {
     res.status(500).json({ message: 'Failed to add message', error: err.message });
