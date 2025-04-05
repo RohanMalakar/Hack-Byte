@@ -29,6 +29,7 @@ function Login() {
     }
   
     try {
+      console.log("LoginData", LoginData);
       const response = await axiosInstance.post("/user/login", LoginData);
       const data = response.data;
 

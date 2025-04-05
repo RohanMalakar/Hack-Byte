@@ -20,6 +20,7 @@ const Register = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
+      console.log("formdata", formData);
       await axiosInstance.post('/user/register', formData);
       navigate('/'); // Redirect to homepage or login
     } catch (err) {

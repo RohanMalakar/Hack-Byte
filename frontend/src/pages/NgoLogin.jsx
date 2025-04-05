@@ -38,7 +38,7 @@ function NgoLogin() {
       localStorage.setItem("userType", "ngo");
   
       alert("Login successful!");
-      navigate("/"); // or navigate to /ngo/dashboard etc.
+      navigate("/ngo-dashboard"); // or navigate to /ngo/dashboard etc.
     } catch (err) {
       const msg = err.response?.data?.message || "Login failed";
       alert(msg);
