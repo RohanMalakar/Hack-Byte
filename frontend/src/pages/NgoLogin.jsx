@@ -2,51 +2,50 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../helper/axiosinstance";
 
-function Login() {
+function NgoLogin() {
   const navigate = useNavigate();
 
-  const [LoginData, setLoginData] = useState({
-    user_name: "",
+  const [loginData, setLoginData] = useState({
+    email: "",
     password: "",
   });
 
-  function handelformdata(e) {
+  function handleInputChange(e) {
     const { name, value } = e.target;
-    setLoginData({
-      ...LoginData,
+    setLoginData((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
   }
 
-  async function OnLogin(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
   
-    const { user_name, password } = LoginData;
+    const { email, password } = loginData;
   
-    if (!user_name || !password) {
-      alert("Every field is required");
+    if (!email || !password) {
+      alert("Both email and password are required.");
       return;
     }
   
     try {
-      console.log("LoginData", LoginData);
-      const response = await axiosInstance.post("/user/login", LoginData);
-      const data = response.data;
-
-      localStorage.setItem("name", data.data?.name || "");
+      const res = await axiosInstance.post("/ngo/login", loginData);
+      const data = res.data;
   
-      // ✅ Set user type
-      localStorage.setItem("userType", "user");
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("ngoName", data.ngo?.name || "");
   
-      alert("Login successful");
-      navigate("/");
+      localStorage.setItem("userType", "ngo");
+  
+      alert("Login successful!");
+      navigate("/ngo-dashboard"); // or navigate to /ngo/dashboard etc.
     } catch (err) {
       const msg = err.response?.data?.message || "Login failed";
       alert(msg);
     }
   
     setLoginData({
-      user_name: "",
+      email: "",
       password: "",
     });
   }
@@ -59,22 +58,22 @@ function Login() {
           className="text-3xl font-bold text-center text-[#7A2F46]"
           style={{ fontFamily: "'Playfair Display', serif" }}
         >
-          Welcome Back
+          NGO Login
         </h2>
         <p
           className="text-center text-sm text-gray-600 mb-6"
           style={{ fontFamily: "'Poppins', sans-serif" }}
         >
-          Empowering Minds, One Lesson at a Time
+          Welcome back! Let's make an impact.
         </p>
 
-        <form onSubmit={OnLogin} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <input
-            type="text"
-            name="user_name"
-            placeholder="Username"
-            value={LoginData.user_name}
-            onChange={handelformdata}
+            type="email"
+            name="email"
+            placeholder="NGO Email"
+            value={loginData.email}
+            onChange={handleInputChange}
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#CC738D]"
           />
@@ -82,8 +81,8 @@ function Login() {
             type="password"
             name="password"
             placeholder="Password"
-            value={LoginData.password}
-            onChange={handelformdata}
+            value={loginData.password}
+            onChange={handleInputChange}
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#CC738D]"
           />
@@ -98,9 +97,9 @@ function Login() {
         </form>
 
         <p className="mt-4 text-center text-sm text-gray-600">
-          Don’t have an account?{" "}
+          Don’t have an NGO account?{" "}
           <Link
-            to="/register"
+            to="/ngo/register"
             className="text-[#9F425E] hover:underline font-semibold"
           >
             Sign up
@@ -111,4 +110,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default NgoLogin;
