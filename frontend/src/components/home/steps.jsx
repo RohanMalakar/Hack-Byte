@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { InfoIcon } from "lucide-react";
 
 const Steps2 = () => {
   const steps = [
@@ -15,13 +16,18 @@ const Steps2 = () => {
 
   const leftSections = [
     {
-      title: "📊 Do You Know?",
+      title: (
+        <div className="flex items-center gap-2 text-[#7A2F46]">
+          <InfoIcon className="w-6 h-6 text-[#7A2F46]" />
+          <span className="font-semibold">Did You Know?</span>
+        </div>
+      ),
       content: (
-        <ul className="list-disc ml-6 text-[#7A2F46] space-y-1">
-          <li>Every minute, a woman faces harassment somewhere in the world.</li>
-          <li>1 in 3 women globally experience gender-based violence in their lifetime.</li>
-          <li>Cybercrimes targeting women have surged by 40% in just five years.</li>
-          <li>Most cases go unreported due to fear or lack of trust in the system.</li>
+        <ul className="list-disc ml-6 text-[#7A2F46] space-y-1 text-justify">
+          <li>Poorly lit streets are 2.5x more likely to become hotspots for harassment and stalking at night.</li>
+          <li>Areas without CCTV cameras see a 70% lower reporting rate, making it easier for offenders to get away.</li>
+          <li>Eve teasing, often brushed off as “minor,” is a common precursor to more violent crimes against women.</li>
+          <li>Eve teasing, often brushed off as “minor,” is a common precursor to more violent crimes against women.</li>
         </ul>
       )
     },
@@ -48,6 +54,7 @@ const Steps2 = () => {
         </ul>
       )
     }
+    
   ];
 
   return (
@@ -64,7 +71,7 @@ const Steps2 = () => {
 
       <div className="flex flex-col lg:flex-row w-full max-w-6xl gap-12">
         {/* Left Content Sections */}
-        <div className="lg:w-1/2 space-y-10">
+        <div className="lg:w-9/10 space-y-10">
           {leftSections.map((section, idx) => (
             <motion.div
               key={idx}
