@@ -10,7 +10,7 @@ const Home = () => {
     <ChatbotInterface/>
     <Hero/>
     <Steps/>
-    <Footer/>
+    
     </>
   )
 }
