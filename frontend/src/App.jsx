@@ -13,11 +13,14 @@ import Posts from './pages/Posts';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Footer from './components/home/Footer';
+import NgoRegister from './pages/NgoRegister';
+import NgoLogin from './pages/NgoLogin';
+import NgoDashboard from './pages/NgoDashboard';
 
 const App = () => {
   return (
     <Router>
-      <div className="h-screen flex flex-col">
+      <div >
         {/* Navbar */}
         <FeminineNavbar />
         {/*<PostForm />*/}
@@ -34,6 +37,9 @@ const App = () => {
             <Route path="/posts" element={<Posts />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/ngo-register" element={<NgoRegister/>}/>
+            <Route path="/ngo-login" element={<NgoLogin/>}/>
+            <Route path="/ngo-dashboard" element={<NgoDashboard/>}/>
           </Routes>
         </div>
         <Footer/>

@@ -1,11 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Heart, HeartOff, MapPin } from 'lucide-react';
 import axiosInstance from '../../helper/axiosinstance';
+import { useLocation } from 'react-router-dom';
 
 const PostCard = ({ post }) => {
   const [liked, setLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(0);
   const [currentImg, setCurrentImg] = useState(0);
+
+  const location = useLocation();
+  const isNgoDashboard = location.pathname === '/ngo-dashboard';
+  const userType = localStorage.getItem("userType");
+
+  useEffect(() => {
+    getLikesCount();
+    if (userType !== "ngo") {
+      checkIfLiked();
+    }
+  }, [post._id]);
 
   async function getLikesCount() {
     try {
@@ -24,11 +36,6 @@ const PostCard = ({ post }) => {
       console.error('Error checking if liked:', error);
     }
   }
-
-  useEffect(() => {
-    getLikesCount();
-    checkIfLiked();
-  }, [post._id]);
 
   const toggleLike = async () => {
     try {
@@ -54,14 +61,27 @@ const PostCard = ({ post }) => {
     setCurrentImg((prev) => (prev - 1 + post.media.length) % post.media.length);
   };
 
+  const handleAccept = async () => {
+    try {
+      const response = await axiosInstance.post(`/ngo/accept`, {
+        postId: post._id,
+      });
+      alert('Accepted successfully!');
+    } catch (err) {
+      console.error('Error accepting post:', err);
+    }
+  };
+
   return (
     <div className="bg-white rounded-2xl shadow-lg p-4 max-w-md w-full transition hover:shadow-xl">
       <div className="flex justify-between items-start mb-2">
         <h2 className="text-xl font-bold text-gray-800">{post.title}</h2>
-        <button onClick={toggleLike} className="flex items-center gap-1">
-          {liked ? <Heart className="text-red-500" /> : <HeartOff className="text-gray-400" />}
-          <span className="text-sm text-gray-500">{likesCount}</span>
-        </button>
+        {userType !== "ngo" && (
+          <button onClick={toggleLike} className="flex items-center gap-1">
+            {liked ? <Heart className="text-red-500" /> : <HeartOff className="text-gray-400" />}
+            <span className="text-sm text-gray-500">{likesCount}</span>
+          </button>
+        )}
       </div>
 
       <div className="flex items-center text-sm text-gray-500 mb-2">
@@ -92,7 +112,6 @@ const PostCard = ({ post }) => {
             </>
           )}
         </div>
-
       )}
 
       <p className="text-sm text-gray-700 truncate">{post.description}</p>
@@ -100,6 +119,15 @@ const PostCard = ({ post }) => {
       <div className="mt-2 text-xs text-gray-400">
         Status: <span className="capitalize">{post.status}</span>
       </div>
+
+      {isNgoDashboard && (
+        <button
+          onClick={handleAccept}
+          className="mt-3 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
+        >
+          Accept
+        </button>
+      )}
     </div>
   );
 };
