@@ -19,7 +19,7 @@ import NgoDashboard from './pages/NgoDashboard';
 const App = () => {
   return (
     <Router>
-      <div className="h-screen flex flex-col">
+      <div >
         {/* Navbar */}
         <FeminineNavbar />
         {/*<PostForm />*/}

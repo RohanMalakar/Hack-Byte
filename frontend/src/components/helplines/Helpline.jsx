@@ -192,8 +192,8 @@ const HelplineSection = () => {
     <div className="max-w-6xl mx-auto px-4 py-12">
       {/* Header & Search */}
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Emergency & Support Helplines</h2>
-        <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-rose-800 mb-4">Emergency & Support Helplines</h2>
+        <p className="text-gray-600 mb-8 max-w-3xl mx-auto">
           Quick access to emergency services and support helplines. Find the help you need, when you need it.
         </p>
         
@@ -254,7 +254,7 @@ const HelplineSection = () => {
                 animate="show"
                 exit={{ opacity: 0, scale: 0.9 }}
                 whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                className={`bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow p-6 border-l-4 ${
+                className={`bg-slate-100 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow p-6 border-l-4 ${
                   helpline.category === 'Emergency' ? 'border-red-500' :
                   helpline.category === 'Women' ? 'border-pink-500' :
                   helpline.category === 'Mental Health' ? 'border-purple-500' :
@@ -273,7 +273,7 @@ const HelplineSection = () => {
                 
                 <a 
                   href={`tel:${helpline.contact}`}
-                  className="flex items-center justify-center w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md transition-colors mt-4"
+                  className="flex items-center justify-center w-full py-2 px-4 bg-rose-300 hover:bg-rose-400 text-white font-medium rounded-md transition-colors mt-4"
                 >
                   <Phone size={18} className="mr-2" />
                   <span className="text-lg font-semibold">{helpline.contact}</span>
@@ -304,7 +304,7 @@ const HelplineSection = () => {
                   {helpline.email && (
                     <a 
                       href={`mailto:${helpline.email}`} 
-                      className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-colors"
+                      className="p-2 text-gray-600 hover:text-rose-600 hover:bg-rose-50 rounded-full transition-colors"
                       title="Email Support"
                     >
                       <Mail size={18} />
@@ -325,7 +325,7 @@ const HelplineSection = () => {
                   setSearchQuery('');
                   setActiveCategory('All');
                 }}
-                className="mt-3 text-blue-600 hover:text-blue-800 font-medium"
+                className="mt-3 text-blue-600 hover:text-rose-800 font-medium"
               >
                 Reset filters
               </button>
@@ -336,7 +336,7 @@ const HelplineSection = () => {
       
       {/* SOS Floating Button */}
       <motion.button
-        className="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-red-600 text-white shadow-lg flex items-center justify-center hover:bg-red-700"
+        className="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-rose-600 text-white shadow-lg flex items-center justify-center hover:bg-red-700"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setShowSOS(true)}
