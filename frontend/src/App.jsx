@@ -18,7 +18,7 @@ const App = () => {
         <FeminineNavbar />
         
         {/* Page Content */}
-        <div className="flex-1 container mx-auto p-4">
+        <div>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/create" element={<CreatePost />} />
