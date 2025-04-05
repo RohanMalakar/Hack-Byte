@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+//import Post from './pages/Posts';
 
 const FeminineNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +12,7 @@ const FeminineNavbar = () => {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Create Post', path: '/create' },
+    { name: 'Create Post', path: '/post' },
     { name: 'Read Post', path: '/read' },
     { name: 'Read Blogs', path: '/blogs' },
     { name: 'Helplines', path: '/helplines' },

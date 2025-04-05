@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import PostForm from '../components/createposts/PostForm';
 
-const Posts = () => {
+const Post = () => {
   return (
     <div>
       <p>Posts</p>
     </div>
-  )
-}
+  );
+};
 
-export default Posts
+export default Post;
