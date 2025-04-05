@@ -311,7 +311,7 @@ const PostForm = ({ editPost = null, onSubmit }) => {
         <motion.div className="flex justify-center" variants={itemVariants}>
           <motion.button
             type="submit"
-            className="px-55 py-3 bg-pink-500 text-white rounded-lg font-medium shadow-md hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-opacity-50 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center"
+            className="px-79 py-3 bg-pink-500 text-white rounded-lg font-medium shadow-md hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-opacity-50 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
             disabled={isSubmitting}
