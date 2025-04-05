@@ -12,7 +12,7 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js";
 
 
 const createPost = async (req, res) => {
-    const { title, description,tag=[]} = req.body;
+    const { title, description,tag=[],anonymous} = req.body;
 
     if (!title || !description ) {
         throw new ApiError(400, "Title and description are required");
@@ -22,6 +22,8 @@ const createPost = async (req, res) => {
         title,
         description,
         user_name: req.user.user_name,
+        media: [],
+        anonymous: anonymous || false,
     });
     
     if(req.files?.post_media && req.files.post_media.length > 0){
@@ -30,12 +32,13 @@ const createPost = async (req, res) => {
             if(!post_media){
                 throw new ApiError(500,"Something went wrong while uploading post_media");
             }
-            await Media.create({
-                post_id: post._id,
-                link: post_media,
-                type: "img",
-                order: i + 1, 
-            });
+            post.media.push(post_media);
+            // await Media.create({
+            //     post_id: post._id,
+            //     link: post_media,
+            //     type: "img",
+            //     order: i + 1, 
+            // });
           }
     }
     
@@ -57,8 +60,6 @@ const createPost = async (req, res) => {
         //     text: ngoTagMessage,
         // });
     }
-    
-
     res.status(201).json(new ApiResponse(201, post, "Post created successfully"));
 }
 
@@ -75,7 +76,6 @@ const getPost = async (req, res) => {
         throw new ApiError(404, "Post not found");
     }
 
-    const media = await Media.find({ post_id });
     const tags = await Tag.find({ post_id });
     res.json(new ApiResponse(200, { post, media, tags }, "Post retrieved successfully"));
 }

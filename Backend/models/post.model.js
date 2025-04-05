@@ -37,7 +37,12 @@ const postSchema = new mongoose.Schema({
   under_ngo: { 
     type: mongoose.Schema.Types.String, 
     ref: "NGO" 
-  }
+  },
+  media: [
+    {
+      type: String
+    }
+  ],
 },{
   timestamps: true,
 });
