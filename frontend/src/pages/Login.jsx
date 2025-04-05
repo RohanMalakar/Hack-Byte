@@ -31,8 +31,8 @@ function Login() {
     try {
       const response = await axiosInstance.post("/user/login", LoginData);
       const data = response.data;
-  
-      localStorage.setItem("name", data.user?.name || "");
+
+      localStorage.setItem("name", data.data?.name || "");
   
       // ✅ Set user type
       localStorage.setItem("userType", "user");
