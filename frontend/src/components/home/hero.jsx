@@ -27,8 +27,8 @@ const ImageCarousel = () => {
   };
   
   return (
-    <div className="w-full overflow-hidden bg-slate-000">
-      <h2 className="text-3xl font-bold text-center my-7 mb-3 text-orange-800">Empowering Women Through Support</h2>
+    <div className="w-full overflow-hidden bg-rose-50">
+      <h2 className="text-3xl font-bold text-center my-7 mb-3 text-rose-800">Empowering Women Through Support</h2>
 
       
       {/* First row - Left to Right */}

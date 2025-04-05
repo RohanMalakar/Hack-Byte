@@ -18,7 +18,7 @@ import NgoLogin from './pages/NgoLogin';
 const App = () => {
   return (
     <Router>
-      <div className="h-screen flex flex-col">
+      <div >
         {/* Navbar */}
         <FeminineNavbar />
         {/*<PostForm />*/}

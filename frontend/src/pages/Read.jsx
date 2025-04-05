@@ -2,7 +2,7 @@ import React from 'react'
 
 function Read() {
   return (
-    <div>
+    <div bg-indigo-50>
       <p>Read</p>
     </div>
   )
