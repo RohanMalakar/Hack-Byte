@@ -85,7 +85,7 @@ const ImageCarousel = () => {
               <motion.img
                 src={img}
                 alt={`Carousel Image ${index + 1}`}
-                className="w-64 h-64 object-cover rounded-lg"
+                className="w-[356px] h-[356px] object-cover rounded-lg"
                 initial={{ scale: 1 }}
                 whileHover={{ 
                   scale: 1.05,

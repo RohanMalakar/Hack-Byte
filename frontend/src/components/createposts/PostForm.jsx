@@ -118,7 +118,7 @@ const PostForm = ({ editPost = null, onSubmit }) => {
 
   return (
     <motion.div 
-      className="w-full max-w-3xl mx-auto p-6 bg-gradient-to-r from-slate-50 to-slate-100 rounded-xl shadow-lg"
+      className="w-full max-w-3xl mx-auto p-6 bg-gradient-to-r from-rose-50 to-slate-50 rounded-xl shadow-lg"
       initial="hidden"
       animate="visible"
       variants={formVariants}

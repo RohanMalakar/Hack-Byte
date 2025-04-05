@@ -22,7 +22,7 @@ const FeminineNavbar = () => {
   ];
 
   return (
-    <nav className="bg-gradient-to-r from-rose-50 to-slate-200 shadow-lg">
+    <nav className="bg-gradient-to-r from-rose-50 to-slate-50 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-2">
         <div className="flex justify-between h-16">
           {/* Logo Section */}

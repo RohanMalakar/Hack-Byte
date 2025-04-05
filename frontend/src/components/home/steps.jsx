@@ -51,7 +51,7 @@ const Steps2 = () => {
   ];
 
   return (
-    <div className="w-full flex flex-col items-center px-6 py-16 bg-slate-180">
+    <div className="w-full flex flex-col items-center px-6 py-8 bg-slate-180">
       <motion.h3
         className="text-3xl font-bold text-[#7A2F46] mb-10"
         initial={{ opacity: 0, y: -20 }}
@@ -85,7 +85,7 @@ const Steps2 = () => {
           {steps.map((step, index) => (
             <motion.div
               key={index}
-              className={`relative p-6 bg-rose-200 text-white rounded-xl shadow-lg transition duration-200 ease-out cursor-pointer 
+              className={`relative p-6 bg-rose-300 text-white rounded-xl shadow-lg transition duration-200 ease-out cursor-pointer 
                 ${index % 2 === 0 ? "rotate-[-2deg]" : "rotate-[2deg]"} 
                 hover:scale-105 hover:bg-rose-600 hover:shadow-2xl 
                 hover:${index % 2 === 0 ? "rotate-[-1deg]" : "rotate-[1deg]"}
