@@ -80,8 +80,7 @@ const getPost = async (req, res) => {
         throw new ApiError(404, "Post not found");
     }
 
-    const tags = await Tag.find({ post_id });
-    res.json(new ApiResponse(200, { post, media, tags }, "Post retrieved successfully"));
+    res.json(new ApiResponse(200, post, "Post retrieved successfully"));
 }
 
 const getAllPosts = async (req, res) => {

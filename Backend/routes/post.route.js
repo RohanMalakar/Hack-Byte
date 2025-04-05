@@ -8,7 +8,7 @@ postRouter.post("/create",upload.fields([
     {name:"post_media",maxCount:5}
 ]),isloggedIn,createPost)
 
-postRouter.post("/allPosts",getAllPosts);
+postRouter.get("/allPosts",getAllPosts);
 
 postRouter.get("/singlePost/:post_id",getPost);
 
