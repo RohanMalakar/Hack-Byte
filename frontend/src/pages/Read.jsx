@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Create = () => {
+function Read() {
   return (
     <div>
-      <p>Hello</p>
+      <p>Read</p>
     </div>
   )
 }
 
-export default Create
+export default Read

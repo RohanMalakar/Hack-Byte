@@ -23,9 +23,7 @@ const createPost = async (req, res) => {
         description,
         user_name: req.user.user_name,
     });
-
-
-
+    
     if(req.files?.post_media && req.files.post_media.length > 0){
         for(let i=0;i<req.files.post_media.length;i++){
             let post_media=await uploadOnCloudinary(req.files.post_media[i].path);
@@ -64,4 +62,54 @@ const createPost = async (req, res) => {
     res.status(201).json(new ApiResponse(201, post, "Post created successfully"));
 }
 
-export {createPost} ;
+
+const getPost = async (req, res) => {
+    const { post_id } = req.params;
+
+    if (!post_id) {
+        throw new ApiError(400, "Post ID is required");
+    }
+
+    const post = await Post.findById(post_id).populate("user_name").sort({ createdAt: -1 });
+    if (!post) {
+        throw new ApiError(404, "Post not found");
+    }
+
+    const media = await Media.find({ post_id });
+    const tags = await Tag.find({ post_id });
+    res.json(new ApiResponse(200, { post, media, tags }, "Post retrieved successfully"));
+}
+
+const getAllPosts = async (req, res) => {
+    const posts = await Post.find().populate("user_name").sort({ createdAt: -1 });
+    if (!posts) {
+        throw new ApiError(404, "Posts not found");
+    }
+
+    res.json(new ApiResponse(200, posts, "Posts retrieved successfully"));
+}
+
+// const updatePost = async (req, res) => {
+//     const { post_id } = req.params;
+//     const { title, description, anonymous } = req.body;
+
+//     if (!post_id) {
+//         throw new ApiError(400, "Post ID is required");
+//     }
+
+//     const post = await Post.findById(post_id);
+//     if (!post) {
+//         throw new ApiError(404, "Post not found");
+//     }
+
+//     post.title = title || post.title;
+//     post.description = description || post.description;
+//     post.anonymous = anonymous || post.anonymous;
+//     post.updatedAt = Date.now();
+
+//     await post.save();
+
+//     res.json(new ApiResponse(200, post, "Post updated successfully"));
+// }
+
+export {createPost,getPost,getAllPosts} ;

@@ -1,9 +1,9 @@
 import React from 'react'
-
+import Helpline from '../components/helplines/Helpline'
 const Helplines = () => {
   return (
     <div>
-      <p>Hello</p>
+      <Helpline/>
     </div>
   )
 }
