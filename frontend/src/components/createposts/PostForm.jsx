@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Tag, Building, Image as ImageIcon, Eye, EyeOff, Loader } from 'lucide-react';
+import axiosInstance from '../../helper/axiosinstance';
 
 const PostForm = ({ editPost = null, onSubmit }) => {
   // Form state
@@ -8,19 +9,13 @@ const PostForm = ({ editPost = null, onSubmit }) => {
   const [description, setDescription] = useState(editPost?.description || '');
   const [location, setLocation] = useState(editPost?.location || '');
   const [issueType, setIssueType] = useState(editPost?.issueType || []);
-  const [organization, setOrganization] = useState(editPost?.organization || '');
+  const [organization, setOrganization] = useState(editPost?.organization || []);
   const [images, setImages] = useState(editPost?.images || []);
   const [isAnonymous, setIsAnonymous] = useState(editPost?.isAnonymous || false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   // Refs
   const fileInputRef = useRef(null);
-  
-  // Issue types
-  const issueTypes = [
-    'Infrastructure', 'Safety', 'Environment', 
-    'Public Services', 'Eve Tease', 'Transportation', 'Other'
-  ];
   
   // Handle image upload
   const handleImageUpload = (e) => {
@@ -60,17 +55,23 @@ const PostForm = ({ editPost = null, onSubmit }) => {
       // and get back URLs to store in your database
       
       const postData = {
-        title,
-        description,
+        title:title,
+        description:description,
         location,
-        issueType,
-        organization,
-        images: images.map(img => img.url), // In real app, use server URLs
-        isAnonymous
+        tag:organization,
+        post_media: images.map(img => img.url), // In real app, use server URLs
+        anonymous:isAnonymous
       };
+
+      console.log("Post Data:", postData);
       
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const response=await axiosInstance.post('/post/create', postData);
+      if (response.status !== 201) {
+        throw new Error('Failed to create post');
+      }
+
+      console.log("Post created successfully:", response.data);
+      
       
       // Call the parent component's onSubmit
       if (onSubmit) {
@@ -83,7 +84,7 @@ const PostForm = ({ editPost = null, onSubmit }) => {
         setDescription('');
         setLocation('');
         setIssueType([]);
-        setOrganization('');
+        setOrganization([]);
         setImages([]);
         setIsAnonymous(false);
       }
@@ -165,7 +166,7 @@ const PostForm = ({ editPost = null, onSubmit }) => {
         
         {/* Location */}
         <motion.div className="mb-4" variants={itemVariants}>
-          <label htmlFor="location" className="block text-gray-700 font-medium mb-2 flex items-center">
+          <label htmlFor="location" className=" text-gray-700 font-medium mb-2 flex items-center">
             <MapPin className="mr-2 text-rose-600" size={18} />
             Location
           </label>
@@ -182,51 +183,44 @@ const PostForm = ({ editPost = null, onSubmit }) => {
           </div>
         </motion.div>
         
-        {/* Issue Types */}
+        {/* Organization */}
         <motion.div className="mb-4" variants={itemVariants}>
-          <label className="block text-gray-700 font-medium mb-2 flex items-center">
-            <Tag className="mr-2 text-rose-600" size={18} />
-            Issue Type
+          <label htmlFor="organization" className="text-gray-700 font-medium mb-2 flex items-center">
+            <Building className="mr-2 text-rose-500" size={18} />
+            Organizations
           </label>
           <div className="flex flex-wrap gap-2">
-            {issueTypes.map((type) => (
+            {['NGOrohan', 'Organization B', 'Organization C', 'Organization D'].map((org) => (
               <motion.button
-                key={type}
+                key={org}
                 type="button"
-                onClick={() => toggleIssueType(type)}
+                onClick={() => {
+                  if (organization.includes(org)) {
+                    setOrganization(organization.filter((o) => o !== org));
+                  } else {
+                    setOrganization([...organization, org]);
+                  }
+                }}
                 className={`px-3 py-1 rounded-full text-sm transition-all ${
-                  issueType.includes(type)
+                  organization.includes(org)
                     ? 'bg-rose-500 text-white'
                     : 'bg-rose-100 text-rose-600 hover:bg-rose-200'
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                {type}
+                {org}
               </motion.button>
             ))}
           </div>
-        </motion.div>
-        
-        {/* Organization */}
-        <motion.div className="mb-4" variants={itemVariants}>
-          <label htmlFor="organization" className="block text-gray-700 font-medium mb-2 flex items-center">
-            <Building className="mr-2 text-rose-500" size={18} />
-            Organization
-          </label>
-          <input
-            id="organization"
-            type="text"
-            value={organization}
-            onChange={(e) => setOrganization(e.target.value)}
-            className="w-full px-4 py-2 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-300 transition"
-            placeholder="Tag relevant organization"
-          />
+          <p className="mt-2 text-sm text-gray-500">
+            Selected: {organization.length > 0 ? organization.join(', ') : 'None'}
+          </p>
         </motion.div>
         
         {/* Image Upload */}
         <motion.div className="mb-4" variants={itemVariants}>
-          <label className="block text-gray-700 font-medium mb-2 flex items-center">
+          <label className=" text-gray-700 font-medium mb-2 flex items-center">
             <ImageIcon className="mr-2 text-rose-600" size={18} />
             Upload Images
           </label>

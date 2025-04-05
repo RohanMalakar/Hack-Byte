@@ -9,8 +9,10 @@ const ChatbotInterface = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSending, setIsSending] = useState(false);
+  const [userName, setuserName] = useState('rohan');
+
   const messagesEndRef = useRef(null);
-  const chatRoomId = '3e61aa02-6f3d-4971-a49f-ff2d1d5bf09b';
+  const [chatRoomId, setChatRoomId] = useState('3e61aa02-6f3d-4971-a49f-ff2d1d5bf09b');
   const apiUrl = `/chatbot/${chatRoomId}`;
   
   const fetchChatHistory = async () => {
@@ -36,6 +38,45 @@ const ChatbotInterface = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+  
+  const createNewChatRoom=async () =>{
+    try {
+      const response = await axiosInstance.post('/chatbot/create/chatroom', {
+        user_name: userName,
+        title: 'Chat Room Title'
+      });
+      setChatRoomId(response?.data?.chat_room_id);
+      console.log('Updated chat room ID:', chatRoomId);
+     
+    } catch (error) {
+      console.error('Error creating new chat room:', error);
+    }
+  }
+
+  //this is to get the user profile
+
+  const getUserProfile = async () => {
+    try {
+      const response = await axiosInstance.get('/user/profile');
+      console.log('User profile:', response.data);
+      setuserName(response.data.user_name);
+      } catch (error) { 
+        console.error('Error fetching user profile:', error);
+      }
+    };
+  
+  const getData = async () => {
+       try {
+        await getUserProfile();
+        await createNewChatRoom();
+       } catch (error) {
+         console.log('Error:', error);
+       }
+  }
+      
+  useEffect(() => {
+    getData();
+  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
