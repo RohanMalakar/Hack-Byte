@@ -12,8 +12,8 @@ const FeminineNavbar = () => {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Create Post', path: '/post' },
-    { name: 'Read Post', path: '/read' },
+    { name: 'Create Post', path: '/create' },
+    { name: 'Posts', path: '/posts' },
     { name: 'Read Blogs', path: '/blogs' },
     { name: 'Helplines', path: '/helplines' },
     { name: 'About Us', path: '/about' },
