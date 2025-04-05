@@ -20,33 +20,36 @@ function NgoLogin() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
+  
     const { email, password } = loginData;
-
+  
     if (!email || !password) {
       alert("Both email and password are required.");
       return;
     }
-
+  
     try {
       const res = await axiosInstance.post("/ngo/login", loginData);
       const data = res.data;
-
+  
       localStorage.setItem("token", data.token);
       localStorage.setItem("ngoName", data.ngo?.name || "");
-
+  
+      localStorage.setItem("userType", "ngo");
+  
       alert("Login successful!");
       navigate("/"); // or navigate to /ngo/dashboard etc.
     } catch (err) {
       const msg = err.response?.data?.message || "Login failed";
       alert(msg);
     }
-
+  
     setLoginData({
       email: "",
       password: "",
     });
   }
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-[#7A2F46] to-[#9F425E] p-4">
