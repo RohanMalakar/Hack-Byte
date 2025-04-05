@@ -31,7 +31,7 @@ const ImageCarousel = () => {
   return (
     <div className="w-full overflow-hidden bg-gradient-to-b from-gray-50 to-gray-100">
       <h2 className="text-3xl font-bold text-center my-7 mb-3 text-orange-800">Empowering Women Through Support</h2>
-      <span className='text-orange-700'>Sahayak is a platform dedicated to providing women with the
+      <span className='text-orange-700 text-center mx-36'>Sahayak is a platform dedicated to providing women with the
                   support they need. Join us in creating a safe and empowering
                   community.</span>
       

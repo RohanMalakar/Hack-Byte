@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { InfoIcon } from "lucide-react";
 
 const Steps2 = () => {
   const steps = [
@@ -15,46 +16,58 @@ const Steps2 = () => {
 
   const leftSections = [
     {
-      title: "📊 Do You Know?",
+      title: (
+        <div className="flex items-center gap-2 text-[#7A2F46]">
+          <InfoIcon className="w-6 h-6 text-[#7A2F46]" />
+          <span className="font-semibold">Did You Know?</span>
+        </div>
+      ),
       content: (
-        <ul className="list-disc ml-6 text-[#7A2F46] space-y-1">
-          <li>Every minute, a woman faces harassment somewhere in the world.</li>
-          <li>1 in 3 women globally experience gender-based violence in their lifetime.</li>
-          <li>Cybercrimes targeting women have surged by 40% in just five years.</li>
-          <li>Most cases go unreported due to fear or lack of trust in the system.</li>
+        <ul className="list-disc ml-6 text-[#7A2F46] space-y-1 text-justify">
+          <li>Poorly lit streets are 2.5x more likely to become hotspots for harassment and stalking at night.</li>
+          <li>Areas without CCTV cameras see a 70% lower reporting rate, making it easier for offenders to get away.</li>
+          <li>Eve teasing, often brushed off as “minor,” is a common precursor to more violent crimes against women.</li>
+          <li>Eve teasing, often brushed off as “minor,” is a common precursor to more violent crimes against women.</li>
         </ul>
       )
     },
     {
       title: "🗣 Words from Women Like You",
       content: (
-        <div className="space-y-3 text-[#7A2F46] italic">
-          <p>"Walking alone at night shouldn’t feel like an act of bravery." – <strong>Ayesha, 23</strong></p>
-          <p>"This platform gave me the courage to speak up." – <strong>Neha, 29</strong></p>
-          <p>"People always told me to stay quiet. But silence doesn’t bring change." – <strong>Meera, 35</strong></p>
-          <p>"A safe world for women is a better world for everyone." – <strong>Riya, 27</strong></p>
-        </div>
+        <div className="space-y-6 text-[#7A2F46] italic">
+  <div>
+    <p>🔸 “It’s not just the attacker. It’s the broken streetlight, the empty road, the silence.”</p>
+    <p className="text-right font-semibold not-italic">– Priya Ramesh, urban safety researcher</p>
+  </div>
+  <div>
+    <p>🔸 “I avoid lane every day, not because I’m weak, but because no one fixed the damn CCTV.”</p>
+    <p className="text-right font-semibold not-italic">– Shraddha, 21, Mumbai student</p>
+  </div>
+  <div>
+    <p>🔸 “It starts with lewd comments, ends with trauma. In between, there’s no one watching.”</p>
+    <p className="text-right font-semibold not-italic">– Anonymous post on Safecity platform</p>
+  </div>
+  <div>
+    <p>🔸 “Badly lit streets are warnings. And we keep ignoring them.”</p>
+    <p className="text-right font-semibold not-italic">– ElsaMarie D’Silva, founder of Red Dot Foundation</p>
+  </div>
+</div>
+
       )
     },
     {
-      title: "🌍 Why This Platform Matters",
-      content: (
-        <p className="text-[#7A2F46]">
-          Women’s issues are often ignored, and safety remains a global concern. Whether it’s street harassment or online abuse, every voice matters. By raising awareness, this platform helps push for change and provides a space where support and solidarity grow stronger each day.
-        </p>
-      )
-    },
-    {
-      title: "💡 Did You Know These Rights?",
+      title: "💡 Know Your Rights",
       content: (
         <ul className="list-disc ml-6 text-[#7A2F46] space-y-1">
-          <li>You have the right to file an FIR at any police station in India.</li>
-          <li>Section 354D of IPC protects women against cyberstalking.</li>
-          <li>Workplaces must follow POSH (Prevention of Sexual Harassment) Act guidelines.</li>
-          <li>You can seek help anonymously in many helpline portals.</li>
+          <li>👉 Eve teasing is punishable under Section 509 of the IPC – report it immediately.</li>
+          <li>👉 Touching or groping in public without consent falls under Section 354 of IPC – it’s a criminal offence.</li>
+          <li>👉 Poorly maintained public spaces can be reported to municipal authorities as safety hazards.</li>
+          <li>👉 You have the right to demand functioning streetlights, CCTV, and safe public transport as a matter of civic safety.</li>
+          <li>👉 Under the Vishaka Guidelines and the POSH Act, harassment isn’t limited to offices – public institutions must ensure safety too.</li>
         </ul>
       )
     }
+    
   ];
 
   return (
@@ -71,7 +84,7 @@ const Steps2 = () => {
 
       <div className="flex flex-col lg:flex-row w-full max-w-6xl gap-12">
         {/* Left Content Sections */}
-        <div className="lg:w-1/2 space-y-10">
+        <div className="lg:w-9/10 space-y-10">
           {leftSections.map((section, idx) => (
             <motion.div
               key={idx}
