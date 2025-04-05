@@ -23,6 +23,7 @@ const createPost = async (req, res) => {
         description,
         user_name: req.user.user_name,
         media: [],
+        tag:[],
         anonymous: anonymous || false,
     });
     
@@ -33,6 +34,7 @@ const createPost = async (req, res) => {
                 throw new ApiError(500,"Something went wrong while uploading post_media");
             }
             post.media.push(post_media);
+            await post.save();
             // await Media.create({
             //     post_id: post._id,
             //     link: post_media,
@@ -44,6 +46,8 @@ const createPost = async (req, res) => {
     
 
     for(let i=0;i<tag.length;i++){
+        post.tag.push(tag[i]);
+        await post.save();
         await Tag.create({
             post_id: post._id,
             tag: tag[i],
