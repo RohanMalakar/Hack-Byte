@@ -7,7 +7,6 @@ import Post from './pages/Posts';
 import Create from './pages/Create';
 import Blogs from './pages/Blogs';
 import Helplines from './pages/Helplines';
-import Partners from './pages/Partners';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Posts from './pages/Posts';
@@ -28,7 +27,6 @@ const App = () => {
             <Route path="/create" element={<Create />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/helplines" element={<Helplines />} />
-            <Route path="/partners" element={<Partners />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/posts" element={<Posts />} />

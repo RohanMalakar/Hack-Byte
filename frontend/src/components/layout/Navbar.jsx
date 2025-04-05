@@ -16,7 +16,6 @@ const FeminineNavbar = () => {
     { name: 'Read Post', path: '/read' },
     { name: 'Read Blogs', path: '/blogs' },
     { name: 'Helplines', path: '/helplines' },
-    { name: 'Partners', path: '/partners' },
     { name: 'About Us', path: '/about' },
     { name: 'Contact Us', path: '/contact' }
   ];

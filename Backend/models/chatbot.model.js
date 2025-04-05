@@ -17,11 +17,11 @@ const messageSchema = new mongoose.Schema({
 });
 
 const chatSchema = new mongoose.Schema({
-  chatRoomId: {
+  chat_room_id: {
     type: String,
     required: true
   },
-  userName: {
+  user_name: {
     type: String,
     required: true,
     ref: 'User'
