@@ -1,0 +1,93 @@
+[
+    {
+      "id": 1,
+      "genre": "Security Tips",
+      "title": "10 Essential Tips for Walking Alone at Night",
+      "description": "A guide to help you stay alert and safe when commuting or walking alone after dark.",
+      "date": "April 5, 2025",
+      "image": "https://static.vecteezy.com/system/resources/thumbnails/024/674/806/small/silhouette-of-a-woman-walking-on-the-street-in-the-fog-at-night-generative-ai-free-photo.jpg",
+      "url": "/blog/walking-alone-at-night"
+    },
+    {
+      "id": 2,
+      "genre": "Personal Story",
+      "title": "How I Escaped a Risky Situation Using a Safety App",
+      "description": "Read Priya's firsthand account of how a simple app helped her contact help in time.",
+      "date": "April 2, 2025",
+      "image": "https://www.americansurveycenter.org/wp-content/uploads/2023/03/women-werkin-SEO.png",
+      "url": "/blog/safety-app-survival"
+    },
+    {
+      "id": 3,
+      "genre": "Resources",
+      "title": "Top Helplines Every Woman Should Know",
+      "description": "Keep this list of verified helpline numbers handy for emergency and mental health support.",
+      "date": "March 30, 2025",
+      "image": "https://m.economictimes.com/thumb/msid-93825939,width-1600,height-900,resizemode-4,imgsize-15488/helpline.jpg",
+      "url": "/blog/emergency-helplines"
+    },
+    {
+      "id": 4,
+      "genre": "Empowerment",
+      "title": "Self-Defense Moves You Can Learn at Home",
+      "description": "Learn basic self-defense techniques that don’t require equipment or classes.",
+      "date": "March 27, 2025",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO87-X2E-wv9QdOFQMgv-Ye29-ReyUr782k39AXtXbHWN7cGBRu_YFbTdpiyB2ILuzw8Y&usqp=CAU",
+      "url": "/blog/self-defense-basics"
+    },
+    {
+      "id": 5,
+      "genre": "Awareness",
+      "title": "What to Do If You Feel Followed",
+      "description": "Understanding how to stay calm and respond if you suspect someone is following you.",
+      "date": "March 23, 2025",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkJX_fG5zOk4Fs2WdwtWSOcwhlyI_ErBDw9Q&s",
+      "url": "/blog/being-followed-awareness"
+    },
+    {
+      "id": 6,
+      "genre": "Technology",
+      "title": "5 Safety Apps That Can Save Your Life",
+      "description": "Explore some of the most reliable and feature-rich safety apps available right now.",
+      "date": "March 20, 2025",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0FdAYHxjI2KoE3QfgK3UcP_fZMp44a8i1mA&s",
+      "url": "/blog/top-safety-apps"
+    },
+    {
+      "id": 7,
+      "genre": "Wellness",
+      "title": "Dealing with Post-Trauma Stress After Harassment",
+      "description": "A mental health perspective on coping after an unsettling encounter.",
+      "date": "March 17, 2025",
+      "image": "https://dam.mediacorp.sg/image/upload/s--gNeRU1JV--/c_fill,g_auto,h_622,w_830/f_auto,q_auto/v1/mediacorp/tdy/image/2024/04/19/20240419-ns-childhood_adverse_experiences_trauma.jpg?itok=YH4MsVDX",
+      "url": "/blog/post-trauma-tips"
+    },
+    {
+      "id": 8,
+      "genre": "Community",
+      "title": "How Local Volunteers Are Making Streets Safer",
+      "description": "A story of community-driven initiatives that are helping women reclaim public spaces.",
+      "date": "March 14, 2025",
+      "image": "https://www.shutterstock.com/image-photo/asian-women-watching-sunset-valletta-260nw-2341507423.jpg",
+      "url": "/blog/community-safety-initiatives"
+    },
+    {
+      "id": 9,
+      "genre": "Education",
+      "title": "Workshops That Teach Safety Skills for Women",
+      "description": "Explore workshops and seminars around the country aimed at educating and empowering women.",
+      "date": "March 10, 2025",
+      "image": "https://cdn.tatlerasia.com/tatlerasia/i/2023/03/06172519-untitled-design-1_cover_1600x1200.jpg",
+      "url": "/blog/women-safety-workshops"
+    },
+    {
+      "id": 10,
+      "genre": "Inspiration",
+      "title": "Meet the Women Behind India’s First Women-Led Patrol Unit",
+      "description": "These brave women are redefining safety and inspiring change in their communities.",
+      "date": "March 7, 2025",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpPJbw7ozLkrlBOwcjneMDAkEIt1hafr06G62JnHwWgusV_Yzq84HplJFsSuZLu77xcKc&usqp=CAU",
+      "url": "/blog/women-patrol-unit"
+    }
+  ]
+  

@@ -164,49 +164,42 @@ const PostForm = ({ editPost = null, onSubmit }) => {
         </motion.div>
         
         {/* Location */}
-        <motion.div className="mb-4" variants={itemVariants}>
-          <label htmlFor="location" className="block text-gray-700 font-medium mb-2 flex items-center">
-            <MapPin className="mr-2 text-rose-600" size={18} />
-            Location
-          </label>
-          <input
-            id="location"
-            type="text"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            className="w-full px-4 py-2 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-300 transition"
-            placeholder="Enter location or use map"
-          />
-          <div className="mt-2 bg-gray-100 h-40 rounded-lg flex items-center justify-center text-gray-400">
-            Google Maps integration will go here
-          </div>
-        </motion.div>
-        
-        {/* Issue Types */}
-        <motion.div className="mb-4" variants={itemVariants}>
-          <label className="block text-gray-700 font-medium mb-2 flex items-center">
-            <Tag className="mr-2 text-rose-600" size={18} />
-            Issue Type
-          </label>
-          <div className="flex flex-wrap gap-2">
-            {issueTypes.map((type) => (
-              <motion.button
-                key={type}
-                type="button"
-                onClick={() => toggleIssueType(type)}
-                className={`px-3 py-1 rounded-full text-sm transition-all ${
-                  issueType.includes(type)
-                    ? 'bg-rose-500 text-white'
-                    : 'bg-rose-100 text-rose-600 hover:bg-rose-200'
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {type}
-              </motion.button>
-            ))}
-          </div>
-        </motion.div>
+        {/* Location */}
+<motion.div className="mb-4" variants={itemVariants}>
+  <label htmlFor="location" className="block text-gray-700 font-medium mb-2 flex items-center">
+    <MapPin className="mr-2 text-rose-600" size={18} />
+    Location
+  </label>
+  <div className="relative">
+    <input
+      id="location"
+      type="text"
+      value={location}
+      onChange={(e) => setLocation(e.target.value)}
+      className="w-full px-4 py-2 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-300 transition placeholder:text-gray-400"
+      placeholder="Type location or click below to auto-detect"
+    />
+    <button
+      type="button"
+      onClick={() => {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition((position) => {
+            const coords = `Lat: ${position.coords.latitude.toFixed(4)}, Lng: ${position.coords.longitude.toFixed(4)}`;
+            setLocation(coords);
+          }, () => {
+            alert("Unable to fetch location.");
+          });
+        } else {
+          alert("Geolocation is not supported by your browser.");
+        }
+      }}
+      className="mt-2 inline-block bg-rose-100 hover:bg-rose-200 text-rose-600 px-4 py-2 rounded-lg text-sm font-medium transition"
+    >
+      📍 Auto-detect My Location
+    </button>
+  </div>
+</motion.div>
+
         
         {/* Organization */}
         <motion.div className="mb-4" variants={itemVariants}>

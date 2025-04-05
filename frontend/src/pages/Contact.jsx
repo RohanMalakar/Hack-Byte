@@ -145,7 +145,7 @@ const Contact = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-rose-800 mb-6 relative inline-block">
+          <h1 className="text-3xl md:text-4xl font-bold text-rose-800 mb-6 relative inline-block">
             Hey!! Don't Panic, You're Strong!!
             <motion.div 
               className="absolute -right-10 -top-10"
@@ -157,7 +157,7 @@ const Contact = () => {
             </motion.div>
           </h1>
           
-          <h2 className="text-2xl md:text-3xl text-rose-700 mb-8">Got a Question? Feedback?</h2>
+          <h2 className="text-2xl md:text-2xl text-rose-700 mb-8">Got a Question? Feedback?</h2>
           
           <motion.div
             className="inline-block bg-gradient-to-r from-rose-800 to-rose-700 rounded-full px-8 py-4 text-white text-xl font-semibold shadow-lg"

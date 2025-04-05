@@ -1,6 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart, Shield, PhoneCall, Users } from 'lucide-react';
+import Ayushi from '../assets/Ayushi.jpg'
+import Bhoomi from '../assets/Bhoomi.jpg'
+import Rohan from '../assets/Rohan.jpg'
+import Neelesh from '../assets/Neelesh.jpg'
 
 const AboutUs = () => {
   // Animation variants
@@ -25,28 +29,28 @@ const AboutUs = () => {
   
   const teamMembers = [
     {
-      name: "Priya Sharma",
-      role: "Founder & CEO",
-      quote: "Every woman deserves a voice and a safe space to be heard.",
-      image: "/api/placeholder/112/112"
+      name: "Bhoomi Garg",
+      role: "Frontend Developer & Team Lead",
+      quote: "Designing safe digital spaces where every woman feels seen, heard, and supported.",
+      image: Bhoomi
     },
     {
-      name: "Ananya Gupta",
-      role: "Head of Counseling",
-      quote: "Supporting women through their journey to empowerment.",
-      image: "/api/placeholder/112/112"
+      name: "Rohan Malakar",
+      role: "Backend Developer & System Builder",
+      quote: "Empowering change through every API that connects help with those in need.",
+      image: Rohan
     },
     {
-      name: "Meera Patel",
-      role: "Community Manager",
-      quote: "Building bridges between survivors and support networks.",
-      image: "/api/placeholder/112/112"
+      name: "Ayushi Ranjan",
+      role: "Frontend Developer & UI Designer",
+      quote: "Translating empathy into interfaces that uplift and empower women daily.",
+      image: Ayushi
     },
     {
-      name: "Deepika Reddy",
-      role: "Legal Advisor",
-      quote: "Knowledge of rights is the first step toward justice.",
-      image: "/api/placeholder/112/112"
+      name: "Neelesh Baghel",
+      role: "Backend Developer & Tech Support",
+      quote: "Building systems fortified by code and driven by justice.",
+      image: Neelesh
     }
   ];
 
@@ -127,7 +131,7 @@ const AboutUs = () => {
             >
               {/* Background card (appears on hover) */}
               <motion.div
-                className="absolute inset-0 bg-rose-50 rounded-2xl shadow-lg z-0 opacity-0"
+                className="absolute inset-0 bg-rose-200 rounded-2xl shadow-lg z-0 opacity-0"
                 variants={{
                   hover: {
                     rotate: 3,
@@ -192,7 +196,7 @@ const AboutUs = () => {
             className="flex items-center bg-rose-600 text-white px-6 py-3 rounded-full font-medium shadow-md"
           >
             <PhoneCall className="h-5 w-5 mr-2" />
-            <span>Helpline</span>
+            <a href='./contact'>Helpline</a>
           </motion.div>
         </div>
       </motion.div>

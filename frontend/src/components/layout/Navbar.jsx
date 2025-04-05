@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import Logo from '../../assets/sahayak-logo-removebg-preview.png'; // Adjust the path to your logo imageq
 //import {Logo} from 'Web_Logo.png';
 //import Post from './pages/Posts';
 
@@ -34,24 +35,11 @@ const FeminineNavbar = () => {
           >
             <div className="flex-shrink-0 flex items-center">
               {/* Logo SVG */}
-              <svg
-                className="h-8 w-8"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
-                  fill="#FFFFFF"
-                  stroke="#FFFFFF"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span className="ml-2 text-xl font-bold text-rose-600 mr-10" style={{ fontFamily: "'Playfair Display', serif" }}>
-                Sahayak
-              </span>
+              <img src={Logo} alt='logo' height="80" width='80'/>
+              
+                
+              
+              
             </div>
           </motion.div>
 
