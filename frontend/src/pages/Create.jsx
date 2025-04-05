@@ -14,15 +14,15 @@ const Create = () => {
   };
 
   return (
-    <div className="min-h-screen bg-pink-50 py-12 px-4">
+    <div className="min-h-screen bg-slate-180 to-slate-100 py-6 px-4">
       {/* Page Header */}
       <motion.div 
-        className="max-w-3xl mx-auto mb-10 text-center"
+        className="max-w-3xl mx-auto mb-8 text-center"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <p className="mt-3 text-gray-600">Share an issue with your community and help make a difference</p>
+        <p className="mt-3 text-2xl text-gray-600 font-bold">Share an issue with your community and help make a difference!!</p>
       </motion.div>
 
       {/* Success Message */}

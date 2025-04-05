@@ -34,36 +34,23 @@ const Steps2 = () => {
     {
       title: "🗣 Words from Women Like You",
       content: (
-        <div className="space-y-6 text-[#7A2F46] italic">
-  <div>
-    <p>🔸 “It’s not just the attacker. It’s the broken streetlight, the empty road, the silence.”</p>
-    <p className="text-right font-semibold not-italic">– Priya Ramesh, urban safety researcher</p>
-  </div>
-  <div>
-    <p>🔸 “I avoid lane every day, not because I’m weak, but because no one fixed the damn CCTV.”</p>
-    <p className="text-right font-semibold not-italic">– Shraddha, 21, Mumbai student</p>
-  </div>
-  <div>
-    <p>🔸 “It starts with lewd comments, ends with trauma. In between, there’s no one watching.”</p>
-    <p className="text-right font-semibold not-italic">– Anonymous post on Safecity platform</p>
-  </div>
-  <div>
-    <p>🔸 “Badly lit streets are warnings. And we keep ignoring them.”</p>
-    <p className="text-right font-semibold not-italic">– ElsaMarie D’Silva, founder of Red Dot Foundation</p>
-  </div>
-</div>
-
+        <div className="space-y-3 text-[#7A2F46] italic">
+          <p>"Walking alone at night shouldn’t feel like an act of bravery." – <strong>Ayesha, 23</strong></p>
+          <p>"This platform gave me the courage to speak up." – <strong>Neha, 29</strong></p>
+          <p>"People always told me to stay quiet. But silence doesn’t bring change." – <strong>Meera, 35</strong></p>
+          <p>"A safe world for women is a better world for everyone." – <strong>Riya, 27</strong></p>
+        </div>
       )
     },
+
     {
-      title: "💡 Know Your Rights",
+      title: "💡 Did You Know These Rights?",
       content: (
-        <ul className="list-disc ml-6 text-[#7A2F46] space-y-1">
-          <li>👉 Eve teasing is punishable under Section 509 of the IPC – report it immediately.</li>
-          <li>👉 Touching or groping in public without consent falls under Section 354 of IPC – it’s a criminal offence.</li>
-          <li>👉 Poorly maintained public spaces can be reported to municipal authorities as safety hazards.</li>
-          <li>👉 You have the right to demand functioning streetlights, CCTV, and safe public transport as a matter of civic safety.</li>
-          <li>👉 Under the Vishaka Guidelines and the POSH Act, harassment isn’t limited to offices – public institutions must ensure safety too.</li>
+        <ul className="list-disc ml-6 text-[#7A2F46] space-y-1 ">
+          <li>You have the right to file an FIR at any police station in India.</li>
+          <li>Section 354D of IPC protects women against cyberstalking.</li>
+          <li>Workplaces must follow POSH (Prevention of Sexual Harassment) Act guidelines.</li>
+          <li>You can seek help anonymously in many helpline portals.</li>
         </ul>
       )
     }
@@ -71,7 +58,7 @@ const Steps2 = () => {
   ];
 
   return (
-    <div className="w-full flex flex-col items-center px-6 py-16 bg-[#e6b7c5]">
+    <div className="w-full flex flex-col items-center px-6 py-8 bg-slate-180">
       <motion.h3
         className="text-3xl font-bold text-[#7A2F46] mb-10"
         initial={{ opacity: 0, y: -20 }}
@@ -88,13 +75,13 @@ const Steps2 = () => {
           {leftSections.map((section, idx) => (
             <motion.div
               key={idx}
-              className="bg-[#f8dbe4] p-6 rounded-xl shadow-md"
+              className="bg-gradient-to-r from-rose-50 to-slate-100 p-6 rounded-xl shadow-md"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
             >
-              <h2 className="text-2xl font-semibold text-[#7A2F46] mb-2">{section.title}</h2>
+              <h2 className="text-2xl font-bold text-gray-900 sm:text-2xl mb-6">{section.title}</h2>
               <div className="text-md">{section.content}</div>
             </motion.div>
           ))}
@@ -105,9 +92,9 @@ const Steps2 = () => {
           {steps.map((step, index) => (
             <motion.div
               key={index}
-              className={`relative p-6 bg-[#cc738d] text-white rounded-xl shadow-lg transition duration-200 ease-out cursor-pointer 
+              className={`relative p-6 bg-rose-300 text-white rounded-xl shadow-lg transition duration-200 ease-out cursor-pointer 
                 ${index % 2 === 0 ? "rotate-[-2deg]" : "rotate-[2deg]"} 
-                hover:scale-105 hover:bg-[#b04a68] hover:shadow-2xl 
+                hover:scale-105 hover:bg-rose-600 hover:shadow-2xl 
                 hover:${index % 2 === 0 ? "rotate-[-1deg]" : "rotate-[1deg]"}
               `}
               initial={{ opacity: 0, x: 40 }}
