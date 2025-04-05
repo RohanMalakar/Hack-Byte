@@ -81,7 +81,7 @@ const BlogSection = () => {
 
   return (
     <section>
-      <div className="max-w-6xl mx-auto px-4 py-12 bg-indigo-50">
+      <div className="max-w-6xl mx-auto px-4 py-12 bg-rose-50">
         <motion.h2 
           className="text-4xl font-bold text-center mb-12 text-rose-800"
           initial={{ opacity: 0, y: -20 }}

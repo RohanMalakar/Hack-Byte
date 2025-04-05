@@ -81,7 +81,7 @@ const FeminineNavbar = () => {
             <motion.button
               whileHover={{ 
                 scale: 1.05,
-                boxShadow: '0 0 15px rgba(204, 115, 141, 0.5)'
+                boxShadow: '0 0 15px rgba(185, 0, 0, 0.5)'
               }}
               className="px-4 py-2 text-sm font-medium text-white bg-rose-600 rounded-full transition-all duration-300 ease-in-out mr-3"
               style={{ fontFamily: "'Poppins', sans-serif" }}
@@ -94,7 +94,7 @@ const FeminineNavbar = () => {
                 scale: 1.05,
                 boxShadow: '0 0 15px rgba(204, 115, 141, 0.5)'
               }}
-              className="px-4 py-2 text-sm font-medium bg-white bg-rose-600 rounded-full transition-all duration-300 ease-in-out"
+              className="px-4 py-2 text-sm font-medium bg-white bg-rose-800 rounded-full transition-all duration-300 ease-in-out"
               style={{ fontFamily: "'Poppins', sans-serif" }}
             >
               Sign Up
@@ -154,7 +154,7 @@ const FeminineNavbar = () => {
                   scale: 1.05,
                   boxShadow: '0 0 15px rgba(204, 115, 141, 0.5)'
                 }}
-                className="w-full px-4 py-2 text-sm font-medium text-white bg-[#9F425E] rounded-full transition-all duration-300 ease-in-out"
+                className="w-full px-4 py-2 text-sm font-medium text-white bg-rose-800 rounded-full transition-all duration-300 ease-in-out"
                 style={{ fontFamily: "'Poppins', sans-serif" }}
               >
                 Login

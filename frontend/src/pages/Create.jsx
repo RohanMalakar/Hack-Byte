@@ -14,7 +14,7 @@ const Create = () => {
   };
 
   return (
-    <div className="min-h-screen bg-indigo-50 py-6 px-4">
+    <div className="min-h-screen bg-rose-50 py-6 px-4">
       {/* Page Header */}
       <motion.div 
         className="max-w-3xl mx-auto mb-8 text-center"

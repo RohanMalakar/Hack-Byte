@@ -136,7 +136,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-indigo-50 px-4 py-16">
+    <div className="min-h-screen bg-rose-50 px-4 py-16">
       <div className="max-w-6xl mx-auto">
         {/* Hero Section */}
         <motion.div 
@@ -313,7 +313,7 @@ const Contact = () => {
                     <motion.button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-orange-300 to-rose-300 text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center disabled:opacity-70 transition duration-300 shadow-md hover:shadow-lg"
+                      className="w-full bg-gradient-to-r from-rose-300 to-rose-300 text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center disabled:opacity-70 transition duration-300 shadow-md hover:shadow-lg"
                       variants={buttonVariants}
                       whileHover="hover"
                       whileTap="tap"

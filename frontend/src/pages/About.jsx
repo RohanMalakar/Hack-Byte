@@ -51,7 +51,7 @@ const AboutUs = () => {
   ];
 
   return (
-    <div className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-indigo-50">
+    <div className="py-16 sm:px-6 bg-rose-50">
       {/* What is Sahayak Section */}
       <motion.div 
         className="text-center mb-16"
@@ -176,7 +176,7 @@ const AboutUs = () => {
       
       {/* Helpline Section - Quick access */}
       <motion.div
-        className="bg-gradient-to-r from-rose-50 to-slate-50 rounded-2xl p-6 shadow-md"
+        className="bg-gradient-to-r from-gray-100 to-slate-200 rounded-2xl p-6 shadow-md"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
