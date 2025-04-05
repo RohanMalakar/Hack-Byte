@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+//import {Logo} from 'Web_Logo.png';
 //import Post from './pages/Posts';
 
 const FeminineNavbar = () => {
@@ -21,7 +22,7 @@ const FeminineNavbar = () => {
   ];
 
   return (
-    <nav className="bg-gradient-to-r from-[#7A2F46] to-[#9F425E] shadow-lg">
+    <nav className="bg-gradient-to-r from-rose-50 to-slate-200 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-2">
         <div className="flex justify-between h-16">
           {/* Logo Section */}
@@ -43,7 +44,7 @@ const FeminineNavbar = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span className="ml-2 text-xl font-bold text-white mr-10" style={{ fontFamily: "'Playfair Display', serif" }}>
+              <span className="ml-2 text-xl font-bold text-rose-600 mr-10" style={{ fontFamily: "'Playfair Display', serif" }}>
                 Sahayak
               </span>
             </div>
@@ -60,7 +61,7 @@ const FeminineNavbar = () => {
                 >
                   <Link 
                     to={link.path}
-                    className="px-2 lg:px-3 py-2 text-sm font-medium text-white hover:text-pink-200 transition-colors duration-300 ease-in-out"
+                    className="px-2 lg:px-3 py-2 text-medium font-medium text-black hover:text-rose-600  transition-colors duration-300 ease-in-out font-bold"
                     style={{ fontFamily: "'Poppins', sans-serif" }}
                   >
                     {link.name}
@@ -82,7 +83,7 @@ const FeminineNavbar = () => {
                 scale: 1.05,
                 boxShadow: '0 0 15px rgba(204, 115, 141, 0.5)'
               }}
-              className="px-4 py-2 text-sm font-medium text-white bg-[#9F425E] rounded-full transition-all duration-300 ease-in-out mr-3"
+              className="px-4 py-2 text-sm font-medium text-white bg-rose-600 rounded-full transition-all duration-300 ease-in-out mr-3"
               style={{ fontFamily: "'Poppins', sans-serif" }}
             >
               Login
@@ -93,7 +94,7 @@ const FeminineNavbar = () => {
                 scale: 1.05,
                 boxShadow: '0 0 15px rgba(204, 115, 141, 0.5)'
               }}
-              className="px-4 py-2 text-sm font-medium bg-white text-[#7A2F46] rounded-full transition-all duration-300 ease-in-out"
+              className="px-4 py-2 text-sm font-medium bg-white bg-rose-600 rounded-full transition-all duration-300 ease-in-out"
               style={{ fontFamily: "'Poppins', sans-serif" }}
             >
               Sign Up
@@ -138,7 +139,7 @@ const FeminineNavbar = () => {
               >
                 <Link
                   to={link.path}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-[#CC738D] transition-colors duration-300 ease-in-out"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-rose-600 transition-colors duration-300 ease-in-out"
                   style={{ fontFamily: "'Poppins', sans-serif" }}
                 >
                   {link.name}
