@@ -12,6 +12,7 @@ import Contact from './pages/Contact';
 import Posts from './pages/Posts';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Footer from './components/home/Footer';
 import NgoRegister from './pages/NgoRegister';
 import NgoLogin from './pages/NgoLogin';
 import NgoDashboard from './pages/NgoDashboard';
@@ -41,6 +42,7 @@ const App = () => {
             <Route path="/ngo-dashboard" element={<NgoDashboard/>}/>
           </Routes>
         </div>
+        <Footer/>
       </div>
     </Router>
   );
