@@ -66,9 +66,7 @@ export const addMessageToChat = async (req, res) => {
 
 export const getAllChatRooms = async (req, res) => {  
   try {
-    console.log(req.user.user_name);
     const chats = await Chatbot.find({ user_name: req.user.user_name });
-    console.log(chats);
     if (!chats) return res.status(404).json({ message: 'No chat rooms found' });
     res.status(200).json(chats);
   } catch (err) {
