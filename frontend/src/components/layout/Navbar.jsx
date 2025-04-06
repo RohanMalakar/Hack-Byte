@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import Logo from '../../assets/sahayak-logo-removebg-preview.png'; // Adjust the path to your logo imageq
+//import {Logo} from 'Web_Logo.png';
+//import Post from './pages/Posts';
 
 const FeminineNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,7 +55,7 @@ const FeminineNavbar = () => {
       >
         <Link
           to={link.path}
-          className="px-2 lg:px-3 py-2 text-medium font-medium text-black hover:text-rose-600 transition-colors duration-300 ease-in-out font-bold"
+          className="px-2 lg:px-3 py-2 text-medium text-black hover:text-rose-600 transition-colors duration-300 ease-in-out font-bold"
           style={{ fontFamily: "'Poppins', sans-serif" }}
         >
           {link.name}
@@ -71,17 +77,11 @@ const FeminineNavbar = () => {
           <motion.div className="flex items-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
             <div className="flex-shrink-0 flex items-center">
               {/* Logo SVG */}
-              <svg className="h-8 w-8" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
-                  fill="#FFFFFF"
-                  stroke="#FFFFFF"
-                  strokeWidth="1.5"
-                />
-              </svg>
-              <span className="ml-2 text-xl font-bold text-rose-600 mr-10" style={{ fontFamily: "'Playfair Display', serif" }}>
-                Sahayak
-              </span>
+              <img src={Logo} alt='logo' height="80" width='80'/>
+              
+                
+              
+              
             </div>
           </motion.div>
 

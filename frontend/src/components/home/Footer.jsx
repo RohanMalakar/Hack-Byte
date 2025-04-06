@@ -19,7 +19,7 @@ const Footer = () => {
 
   return (
     <motion.footer
-      className="w-full py-6 px-4 md:px-8 bg-gradient-to-r from-rose-50 to-slate-100 text-gray-100 dark:from-gray-900 dark:to-gray-950 dark:text-gray-200"
+      className="w-full py-6 px-4 md:px-8 bg-[rgba(128,128,128,0.2)] backdrop-blur-sm text-gray-100 dark:bg-[rgba(24,24,27,0.3)] dark:text-gray-200 rounded-xl shadow-md"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
@@ -61,7 +61,7 @@ const Footer = () => {
         >
           <motion.button
             onClick={scrollToTop}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white p-2 rounded-full flex items-center justify-center group"
+            className="bg-rose-600 hover:bg-rose-700 text-white p-2 rounded-full flex items-center justify-center group"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             aria-label="Back to top"

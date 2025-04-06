@@ -10,8 +10,7 @@ const Steps2 = () => {
     { title: "Access Helplines", desc: "Need help but unsure where to go? Find trusted helplines.", num: "04" },
     { title: "Read Blogs", desc: "Want quick safety tips or the latest updates? Check out our blogs.", num: "05" },
     { title: "About Us", desc: "Have doubts about our platform? Learn more about us.", num: "06" },
-    { title: "Contact Us", desc: "Facing issues and need to connect? Reach out to us anytime.", num: "07" },
-    { title: "Stay Updated", desc: "Stay informed with the latest news and security updates.", num: "08" },
+    { title: "Contact Us", desc: "Facing issues and need to connect? Reach out to us anytime.", num: "07" }
   ];
 
   const leftSections = [

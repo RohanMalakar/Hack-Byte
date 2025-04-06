@@ -203,7 +203,7 @@ const HelplineSection = () => {
           <input
             type="text"
             placeholder="Search helplines..."
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -226,7 +226,7 @@ const HelplineSection = () => {
             whileTap={{ scale: 0.95 }}
             className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
               activeCategory === category 
-                ? 'bg-blue-600 text-white shadow-md' 
+                ? 'bg-rose-600 text-white shadow-md' 
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
             onClick={() => setActiveCategory(category)}
@@ -286,7 +286,7 @@ const HelplineSection = () => {
                       href={helpline.website} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-colors"
+                      className="p-2 text-gray-600 hover:text-rose-600 hover:bg-blue-50 rounded-full transition-colors"
                       title="Visit Website"
                     >
                       <ExternalLink size={18} />
@@ -295,7 +295,7 @@ const HelplineSection = () => {
                   {helpline.chat && (
                     <a 
                       href="#" 
-                      className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-colors"
+                      className="p-2 text-gray-600 hover:text-rose-600 hover:bg-rose-50 rounded-full transition-colors"
                       title="Chat Support"
                     >
                       <MessageSquare size={18} />
@@ -325,7 +325,7 @@ const HelplineSection = () => {
                   setSearchQuery('');
                   setActiveCategory('All');
                 }}
-                className="mt-3 text-blue-600 hover:text-rose-800 font-medium"
+                className="mt-3 text-rose-600 hover:text-rose-800 font-medium"
               >
                 Reset filters
               </button>
