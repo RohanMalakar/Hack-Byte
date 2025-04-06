@@ -2,8 +2,10 @@ import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Tag, Building, Image as ImageIcon, Eye, EyeOff, Loader } from 'lucide-react';
 import axiosInstance from '../../helper/axiosinstance';
+import { useNavigate } from 'react-router-dom';
 
 const PostForm = ({ editPost = null, onSubmit }) => {
+  const navigate = useNavigate();
   // Form state
   const [title, setTitle] = useState(editPost?.title || '');
   const [description, setDescription] = useState(editPost?.description || '');
@@ -21,11 +23,9 @@ const PostForm = ({ editPost = null, onSubmit }) => {
   const handleImageUpload = (e) => {
     const files = Array.from(e.target.files);
     if (files.length > 0) {
-      // For demo purposes, we're creating object URLs
-      // In a real app, you would upload to a server
       const newImages = files.map(file => ({
-        url: URL.createObjectURL(file),
-        file: file
+        url: URL.createObjectURL(file), // Temporary URL
+        file: file // Actual file object
       }));
       setImages([...images, ...newImages]);
     }
@@ -45,40 +45,35 @@ const PostForm = ({ editPost = null, onSubmit }) => {
       setIssueType([...issueType, type]);
     }
   };
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+  
     try {
-      // Here you would normally upload images to a server
-      // and get back URLs to store in your database
-      
-      const postData = {
-        title:title,
-        description:description,
-        location,
-        tag:organization,
-        post_media: images.map(img => img.url), // In real app, use server URLs
-        anonymous:isAnonymous
-      };
-
-      console.log("Post Data:", postData);
-      
-      const response=await axiosInstance.post('/post/create', postData);
+      const formData = new FormData();
+      formData.append('title', title);
+      formData.append('description', description);
+      formData.append('location', location);
+      formData.append('anonymous', isAnonymous);
+      organization.forEach((org) => formData.append('tag', org));
+      images.forEach((img) => formData.append('post_media', img.file)); // Append files
+  
+      const response = await axiosInstance.post('/post/create', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+  
       if (response.status !== 201) {
         throw new Error('Failed to create post');
       }
-
-      console.log("Post created successfully:", response.data);
-      
-      
-      // Call the parent component's onSubmit
+  
+      console.log('Post created successfully:', response.data);
+  
       if (onSubmit) {
-        onSubmit(postData);
+        onSubmit(response.data);
       }
-      
-      // Clear form if not editing
+  
       if (!editPost) {
         setTitle('');
         setDescription('');
@@ -88,9 +83,9 @@ const PostForm = ({ editPost = null, onSubmit }) => {
         setImages([]);
         setIsAnonymous(false);
       }
+      navigate('/posts');
     } catch (error) {
-      console.error("Error submitting post:", error);
-      // Handle error (show error message, etc.)
+      console.error('Error submitting post:', error);
     } finally {
       setIsSubmitting(false);
     }
@@ -178,9 +173,9 @@ const PostForm = ({ editPost = null, onSubmit }) => {
             className="w-full px-4 py-2 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-300 transition"
             placeholder="Enter location or use map"
           />
-          <div className="mt-2 bg-gray-100 h-40 rounded-lg flex items-center justify-center text-gray-400">
+          {/* <div className="mt-2 bg-gray-100 h-40 rounded-lg flex items-center justify-center text-gray-400">
             Google Maps integration will go here
-          </div>
+          </div> */}
         </motion.div>
         
         {/* Organization */}
@@ -190,7 +185,7 @@ const PostForm = ({ editPost = null, onSubmit }) => {
             Organizations
           </label>
           <div className="flex flex-wrap gap-2">
-            {['NGOrohan', 'Organization B', 'Organization C', 'Organization D'].map((org) => (
+            {['NGOrohan', 'NGOwalkst', 'NGOgreeng', 'NGOeduup',"NGOhealthh","NGOfoodfr","NGOresqch","NGOoldcar","NGOanimalr","NGOtechyl","NGOempwrk"].map((org) => (
               <motion.button
                 key={org}
                 type="button"

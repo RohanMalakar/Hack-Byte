@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+
 import Logo from '../../assets/sahayak-logo-removebg-preview.png'; // Adjust the path to your logo imageq
 //import {Logo} from 'Web_Logo.png';
 //import Post from './pages/Posts';
@@ -32,6 +30,8 @@ const FeminineNavbar = () => {
     { name: "Helplines", path: "/helplines" },
     { name: "About Us", path: "/about" },
     { name: "Contact Us", path: "/contact" },
+    { name: "Login as NGO", path: "/about" },
+    { name: "NGO Dashboard", path: "/ngo-dashboard" },
   ];
 
   const renderLinks = () => {
