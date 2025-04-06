@@ -5,7 +5,7 @@ const chatbotRouter = Router();
 
 chatbotRouter.post("/create/chatroom",isloggedIn, createChatRoom);
 chatbotRouter.get("/get_all_chat_rooms", isloggedIn, getAllChatRooms);
-chatbotRouter.get("/:chat_room_id",isloggedIn, getChatByRoomId);
-chatbotRouter.post("/:chat_room_id/add_message",isloggedIn, addMessageToChat);
+chatbotRouter.get("/get/:chat_room_id",isloggedIn, getChatByRoomId);
+chatbotRouter.post("/add_message/:chat_room_id",isloggedIn, addMessageToChat);
 
 export default chatbotRouter;

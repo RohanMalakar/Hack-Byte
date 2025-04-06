@@ -34,7 +34,7 @@ function Login() {
       const data = response.data;
 
       localStorage.setItem("name", data.data?.name || "");
-  
+      localStorage.setItem("user_name", data.data?.user_name || "");
       // ✅ Set user type
       localStorage.setItem("userType", "user");
   

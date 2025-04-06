@@ -9,18 +9,19 @@ const ChatbotInterface = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSending, setIsSending] = useState(false);
-  const [userName, setuserName] = useState('rohan');
+  const user_name = localStorage.getItem("user_name")
+  const [userName, setuserName] = useState(user_name);
 
   const messagesEndRef = useRef(null);
   const [chatRoomId, setChatRoomId] = useState('3e61aa02-6f3d-4971-a49f-ff2d1d5bf09b');
-  const apiUrl = `/chatbot/${chatRoomId}`;
+  const apiUrl = `/chatbot/get/${chatRoomId}`;
   
   const fetchChatHistory = async () => {
     try {
       setIsLoading(true);
       const response = await axiosInstance.get(apiUrl);
       console.log('Chat history response:', response.data);
-      const data = await response.data;
+      const data = await response?.data;
       setMessages(data.messages || []);
       setIsLoading(false);
     } catch (error) {
@@ -55,19 +56,19 @@ const ChatbotInterface = () => {
 
   //this is to get the user profile
 
-  const getUserProfile = async () => {
-    try {
-      const response = await axiosInstance.get('/user/profile');
-      console.log('User profile:', response.data);
-      setuserName(response.data.user_name);
-      } catch (error) { 
-        console.error('Error fetching user profile:', error);
-      }
-    };
+  // const getUserProfile = async () => {
+  //   try {
+  //     const response = await axiosInstance.get('/user/profile');
+  //     console.log('User profile:', response.data);
+  //     setuserName(response.data.user_name);
+  //     } catch (error) { 
+  //       console.error('Error fetching user profile:', error);
+  //     }
+  //   };
   
   const getData = async () => {
        try {
-        await getUserProfile();
+        // await getUserProfile();
         await createNewChatRoom();
        } catch (error) {
          console.log('Error:', error);
@@ -100,11 +101,11 @@ const ChatbotInterface = () => {
     
     try {
       setIsSending(true);
-      const response = await axiosInstance.post(`${apiUrl}/add_message`, {
+      const response = await axiosInstance.post(`/chatbot/add_message/${chatRoomId}`, {
         sender: 'user',
         message: messageToSend
       });
-      console.log(response);
+     
       if (response.status === 200) {
         // Refresh chat history to get the properly formatted message with server ID
         await fetchChatHistory();
