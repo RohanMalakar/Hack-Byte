@@ -29,11 +29,12 @@ function Login() {
     }
   
     try {
+      console.log("LoginData", LoginData);
       const response = await axiosInstance.post("/user/login", LoginData);
       const data = response.data;
 
       localStorage.setItem("name", data.data?.name || "");
-  
+      localStorage.setItem("user_name", data.data?.user_name || "");
       // ✅ Set user type
       localStorage.setItem("userType", "user");
   

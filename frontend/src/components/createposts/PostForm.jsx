@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Tag, Building, Image as ImageIcon, Eye, EyeOff, Loader } from 'lucide-react';
+import axiosInstance from '../../helper/axiosinstance';
 
 const PostForm = ({ editPost = null, onSubmit }) => {
   // Form state
@@ -8,19 +9,13 @@ const PostForm = ({ editPost = null, onSubmit }) => {
   const [description, setDescription] = useState(editPost?.description || '');
   const [location, setLocation] = useState(editPost?.location || '');
   const [issueType, setIssueType] = useState(editPost?.issueType || []);
-  const [organization, setOrganization] = useState(editPost?.organization || '');
+  const [organization, setOrganization] = useState(editPost?.organization || []);
   const [images, setImages] = useState(editPost?.images || []);
   const [isAnonymous, setIsAnonymous] = useState(editPost?.isAnonymous || false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   // Refs
   const fileInputRef = useRef(null);
-  
-  // Issue types
-  const issueTypes = [
-    'Infrastructure', 'Safety', 'Environment', 
-    'Public Services', 'Eve Tease', 'Transportation', 'Other'
-  ];
   
   // Handle image upload
   const handleImageUpload = (e) => {
@@ -60,17 +55,23 @@ const PostForm = ({ editPost = null, onSubmit }) => {
       // and get back URLs to store in your database
       
       const postData = {
-        title,
-        description,
+        title:title,
+        description:description,
         location,
-        issueType,
-        organization,
-        images: images.map(img => img.url), // In real app, use server URLs
-        isAnonymous
+        tag:organization,
+        post_media: images.map(img => img.url), // In real app, use server URLs
+        anonymous:isAnonymous
       };
+
+      console.log("Post Data:", postData);
       
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const response=await axiosInstance.post('/post/create', postData);
+      if (response.status !== 201) {
+        throw new Error('Failed to create post');
+      }
+
+      console.log("Post created successfully:", response.data);
+      
       
       // Call the parent component's onSubmit
       if (onSubmit) {
@@ -83,7 +84,7 @@ const PostForm = ({ editPost = null, onSubmit }) => {
         setDescription('');
         setLocation('');
         setIssueType([]);
-        setOrganization('');
+        setOrganization([]);
         setImages([]);
         setIsAnonymous(false);
       }
@@ -164,62 +165,62 @@ const PostForm = ({ editPost = null, onSubmit }) => {
         </motion.div>
         
         {/* Location */}
-        {/* Location */}
-<motion.div className="mb-4" variants={itemVariants}>
-  <label htmlFor="location" className="block text-gray-700 font-medium mb-2 flex items-center">
-    <MapPin className="mr-2 text-rose-600" size={18} />
-    Location
-  </label>
-  <div className="relative">
-    <input
-      id="location"
-      type="text"
-      value={location}
-      onChange={(e) => setLocation(e.target.value)}
-      className="w-full px-4 py-2 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-300 transition placeholder:text-gray-400"
-      placeholder="Type location or click below to auto-detect"
-    />
-    <button
-      type="button"
-      onClick={() => {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition((position) => {
-            const coords = `Lat: ${position.coords.latitude.toFixed(4)}, Lng: ${position.coords.longitude.toFixed(4)}`;
-            setLocation(coords);
-          }, () => {
-            alert("Unable to fetch location.");
-          });
-        } else {
-          alert("Geolocation is not supported by your browser.");
-        }
-      }}
-      className="mt-2 inline-block bg-rose-100 hover:bg-rose-200 text-rose-600 px-4 py-2 rounded-lg text-sm font-medium transition"
-    >
-      📍 Auto-detect My Location
-    </button>
-  </div>
-</motion.div>
-
+        <motion.div className="mb-4" variants={itemVariants}>
+          <label htmlFor="location" className=" text-gray-700 font-medium mb-2 flex items-center">
+            <MapPin className="mr-2 text-rose-600" size={18} />
+            Location
+          </label>
+          <input
+            id="location"
+            type="text"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            className="w-full px-4 py-2 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-300 transition"
+            placeholder="Enter location or use map"
+          />
+          <div className="mt-2 bg-gray-100 h-40 rounded-lg flex items-center justify-center text-gray-400">
+            Google Maps integration will go here
+          </div>
+        </motion.div>
         
         {/* Organization */}
         <motion.div className="mb-4" variants={itemVariants}>
-          <label htmlFor="organization" className="block text-gray-700 font-medium mb-2 flex items-center">
+          <label htmlFor="organization" className="text-gray-700 font-medium mb-2 flex items-center">
             <Building className="mr-2 text-rose-500" size={18} />
-            Organization
+            Organizations
           </label>
-          <input
-            id="organization"
-            type="text"
-            value={organization}
-            onChange={(e) => setOrganization(e.target.value)}
-            className="w-full px-4 py-2 border border-rose-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-300 transition"
-            placeholder="Tag relevant organization"
-          />
+          <div className="flex flex-wrap gap-2">
+            {['NGOrohan', 'Organization B', 'Organization C', 'Organization D'].map((org) => (
+              <motion.button
+                key={org}
+                type="button"
+                onClick={() => {
+                  if (organization.includes(org)) {
+                    setOrganization(organization.filter((o) => o !== org));
+                  } else {
+                    setOrganization([...organization, org]);
+                  }
+                }}
+                className={`px-3 py-1 rounded-full text-sm transition-all ${
+                  organization.includes(org)
+                    ? 'bg-rose-500 text-white'
+                    : 'bg-rose-100 text-rose-600 hover:bg-rose-200'
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {org}
+              </motion.button>
+            ))}
+          </div>
+          <p className="mt-2 text-sm text-gray-500">
+            Selected: {organization.length > 0 ? organization.join(', ') : 'None'}
+          </p>
         </motion.div>
         
         {/* Image Upload */}
         <motion.div className="mb-4" variants={itemVariants}>
-          <label className="block text-gray-700 font-medium mb-2 flex items-center">
+          <label className=" text-gray-700 font-medium mb-2 flex items-center">
             <ImageIcon className="mr-2 text-rose-600" size={18} />
             Upload Images
           </label>

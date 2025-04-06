@@ -60,6 +60,8 @@ const createAcount =asyncHandler(async(req,res)=>{
         is_verified:false,
         is_blocked:false,
     });
+
+    console.log("user is ", user);
     
     await user.save();
     const accessToken= await user.generateAccessToken(); 
@@ -103,6 +105,8 @@ const login=asyncHandler(async(req,res)=>{
     if (!user) {
         throw new ApiError(404,"User not found");
     }
+
+    console.log("user", user);
 
     const isMatch=await user.comparePassword(password);
 
