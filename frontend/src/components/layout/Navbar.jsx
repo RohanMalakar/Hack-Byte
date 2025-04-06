@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import Logo from '../../assets/sahayak-logo-removebg-preview.png'; // Adjust the path to your logo imageq
 //import {Logo} from 'Web_Logo.png';
 //import Post from './pages/Posts';
@@ -52,7 +55,7 @@ const FeminineNavbar = () => {
       >
         <Link
           to={link.path}
-          className="px-2 lg:px-3 py-2 text-medium font-medium text-black hover:text-rose-600 transition-colors duration-300 ease-in-out font-bold"
+          className="px-2 lg:px-3 py-2 text-medium text-black hover:text-rose-600 transition-colors duration-300 ease-in-out font-bold"
           style={{ fontFamily: "'Poppins', sans-serif" }}
         >
           {link.name}
@@ -93,7 +96,7 @@ const FeminineNavbar = () => {
           <div className="hidden md:flex md:items-center">
             {userType ? (
               <span className="text-sm font-semibold text-rose-800" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                {userType === 'user' && `Hi, ${userName}`}
+                {userType === 'user' && Hi, ${userName}}
               </span>
             ) : (
               <>
