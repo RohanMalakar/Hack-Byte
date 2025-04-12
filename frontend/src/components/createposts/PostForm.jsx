@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Tag, Building, Image as ImageIcon, Eye, EyeOff, Loader } from 'lucide-react';
 import axiosInstance from '../../helper/axiosinstance';
@@ -15,6 +15,7 @@ const PostForm = ({ editPost = null, onSubmit }) => {
   const [images, setImages] = useState(editPost?.images || []);
   const [isAnonymous, setIsAnonymous] = useState(editPost?.isAnonymous || false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [ngos, setNgos] = useState([]);
   
   // Refs
   const fileInputRef = useRef(null);
@@ -111,6 +112,24 @@ const PostForm = ({ editPost = null, onSubmit }) => {
       transition: { type: "spring", stiffness: 100 }
     }
   };
+  
+  const getAllNgos = async () => {
+    try {
+      const response = await axiosInstance.get('/ngo/getallngo');
+      if (response.status === 200) {
+        setNgos(response.data.data);
+      } else {
+        console.error('Failed to fetch NGOs:', response.data.message);
+      }
+    } catch (error) {
+      console.error('Error fetching NGOs:', error);
+    }
+  }
+  
+  useEffect(() => {
+    getAllNgos();
+  }
+  , []);
 
   return (
     <motion.div 
@@ -185,26 +204,27 @@ const PostForm = ({ editPost = null, onSubmit }) => {
             Organizations
           </label>
           <div className="flex flex-wrap gap-2">
-            {['NGOrohan', 'NGOwalkst', 'NGOgreeng', 'NGOeduup',"NGOhealthh","NGOfoodfr","NGOresqch","NGOoldcar","NGOanimalr","NGOtechyl","NGOempwrk"].map((org) => (
+            {ngos.map((org) => (
               <motion.button
-                key={org}
+                key={org.ngo_id}
                 type="button"
                 onClick={() => {
-                  if (organization.includes(org)) {
-                    setOrganization(organization.filter((o) => o !== org));
+                  if (organization.includes(org.ngo_id)) {
+
+                    setOrganization(organization.filter((o) => o !== org.ngo_id));
                   } else {
-                    setOrganization([...organization, org]);
+                    setOrganization([...organization, org.ngo_id]);
                   }
                 }}
                 className={`px-3 py-1 rounded-full text-sm transition-all ${
-                  organization.includes(org)
+                  organization.includes(org.ngo_id)
                     ? 'bg-rose-500 text-white'
                     : 'bg-rose-100 text-rose-600 hover:bg-rose-200'
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                {org}
+                {org.ngo_id}
               </motion.button>
             ))}
           </div>

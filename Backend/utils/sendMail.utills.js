@@ -1,7 +1,8 @@
+import dotenv from "dotenv";
+dotenv.config();
 import nodemailer from "nodemailer";
 
 const sendMail = async function ({email, subject, messageHTML}) {
-    
   try {
     // Create the transporter
     const auth = nodemailer.createTransport({
@@ -21,7 +22,6 @@ const sendMail = async function ({email, subject, messageHTML}) {
       subject: subject,
       html: messageHTML, // Use the HTML content here
     };
-
     // Send the email
     const emailResponse = await auth.sendMail(receiver);
     console.log("Email sent successfully:", emailResponse.messageId);

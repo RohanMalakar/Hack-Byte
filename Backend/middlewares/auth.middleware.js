@@ -15,7 +15,7 @@ const isloggedIn = asyncHandler(async(req,res,next)=>{
       next();
 
    } catch (error) {
-      throw new ApiError(400,error?.message || "something went will decoding access token")
+      
    }
 })
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../helper/axiosinstance';
 
-const Register = () => {
+const Register = ({isloggedIn, setIsloggedIn,userData, setUserData}) => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -20,9 +20,14 @@ const Register = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      console.log("formdata", formData);
-      await axiosInstance.post('/user/register', formData);
-      navigate('/'); // Redirect to homepage or login
+      const response=await axiosInstance.post('/user/register', formData);
+      const data = response.data;
+      localStorage.setItem("isloggedIn", "true"); 
+      localStorage.setItem("userType", "user");
+      localStorage.setItem("userData", JSON.stringify(data?.data));
+      setUserData(data?.data); 
+      setIsloggedIn(true); 
+      navigate('/'); 
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');
     }

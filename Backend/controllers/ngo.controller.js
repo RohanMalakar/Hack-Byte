@@ -160,4 +160,22 @@ const resetPassword = asyncHandler(async (req, res) => {
     res.json(new ApiResponse(200, ngo, "Password updated successfully"));
 });
 
-export { createAccount, login, logout, getProfile, editProfile, resetPassword };
+const getAllNgo = asyncHandler(async (req, res) => {
+    const ngosData = await NGO.find({ }).select("-password");
+    if (!ngosData) {
+        throw new ApiError(404, "No NGOs found");
+    }
+    
+    const ngos = ngosData.map((ngo) => {
+        return {
+            ngo_id: ngo.ngo_id
+        }
+    });
+
+
+    res.json(new ApiResponse(200, ngos, "All NGOs retrieved successfully"));
+});
+
+
+
+export { createAccount, login, logout, getProfile, editProfile, resetPassword,getAllNgo};

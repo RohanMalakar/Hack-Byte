@@ -2,11 +2,11 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../helper/axiosinstance";
 
-function Login() {
+function Login({isloggedIn, setIsloggedIn,userData, setUserData}) {
   const navigate = useNavigate();
 
   const [LoginData, setLoginData] = useState({
-    user_name: "",
+    email: "",
     password: "",
   });
 
@@ -20,25 +20,21 @@ function Login() {
 
   async function OnLogin(e) {
     e.preventDefault();
+    const { email, password } = LoginData;
   
-    const { user_name, password } = LoginData;
-  
-    if (!user_name || !password) {
+    if (!email || !password) {
       alert("Every field is required");
       return;
     }
   
     try {
-      console.log("LoginData", LoginData);
       const response = await axiosInstance.post("/user/login", LoginData);
       const data = response.data;
-
-      localStorage.setItem("name", data.data?.name || "");
-      localStorage.setItem("user_name", data.data?.user_name || "");
-      // ✅ Set user type
+      localStorage.setItem("isloggedIn", "true"); 
       localStorage.setItem("userType", "user");
-  
-      alert("Login successful");
+      localStorage.setItem("userData", JSON.stringify(data?.data));
+      setUserData(data?.data); 
+      setIsloggedIn(true); // Set login state to true
       navigate("/");
     } catch (err) {
       const msg = err.response?.data?.message || "Login failed";
@@ -46,7 +42,7 @@ function Login() {
     }
   
     setLoginData({
-      user_name: "",
+      email: "",
       password: "",
     });
   }
@@ -71,9 +67,9 @@ function Login() {
         <form onSubmit={OnLogin} className="space-y-4">
           <input
             type="text"
-            name="user_name"
-            placeholder="Username"
-            value={LoginData.user_name}
+            name="email"
+            placeholder="Email "
+            value={LoginData.email}
             onChange={handelformdata}
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#CC738D]"

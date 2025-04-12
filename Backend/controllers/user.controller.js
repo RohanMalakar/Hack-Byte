@@ -81,8 +81,9 @@ const login=asyncHandler(async(req,res)=>{
 
     const {user_name,email,password}=req.body;
     
+    console.log("login body",req.body);
     
-    if (!email && !user_name) {
+    if (!email ) {
         throw new ApiError(404,"email or user_name is requird");
     }
 
@@ -98,9 +99,7 @@ const login=asyncHandler(async(req,res)=>{
 //    }
    
 
-    const user=await User.findOne({
-        $or:[{email},{user_name}]
-    }).select("+password");
+    const user=await User.findOne({email}).select("+password");
 
     if (!user) {
         throw new ApiError(404,"User not found");
@@ -133,10 +132,10 @@ const login=asyncHandler(async(req,res)=>{
     
 });
 const logout=asyncHandler(async(req,res)=>{
-    const user_name=req.user.user_name;
-    const user=await User.findOne({user_name});
-    if (!user) throw new ApiError(404,"unauthorised Access");
-    await user.save();
+    // const user_name=req.user.user_name;
+    // const user=await User.findOne({user_name});
+    // if (!user) throw new ApiError(404,"unauthorised Access");
+    // await user.save();
     const option={
         secure:true,
         httpOnly:true,

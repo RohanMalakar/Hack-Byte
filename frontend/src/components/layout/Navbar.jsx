@@ -3,20 +3,30 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 import Logo from '../../assets/sahayak-logo-removebg-preview.png'; // Adjust the path to your logo imageq
+import axiosInstance from '../../helper/axiosinstance';
 //import {Logo} from 'Web_Logo.png';
 //import Post from './pages/Posts';
 
-const FeminineNavbar = () => {
+const FeminineNavbar = ({isloggedIn, setIsloggedIn,userData,setUserData}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [userType, setUserType] = useState(null);
-  const [userName, setUserName] = useState("");
+  
+  console.log("userData",userData);
 
-  useEffect(() => {
-    const type = localStorage.getItem("userType");
-    const name = localStorage.getItem("name"); // or however you're storing it
-    setUserType(type);
-    setUserName(name);
-  }, []);
+  const loggedOuthelper = async () => {
+    const response=await axiosInstance.get("/user/logout");
+    if(response.status===200){
+      setIsloggedIn(false);
+      setUserData({});
+      alert("Logout successful");
+      setUserType(null);
+      localStorage.removeItem("userType");
+      localStorage.removeItem("isloggedIn");
+      localStorage.removeItem("userData");
+    }else{
+      alert("Logout failed");
+    }
+  }
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -29,9 +39,7 @@ const FeminineNavbar = () => {
     { name: "Read Blogs", path: "/blogs" },
     { name: "Helplines", path: "/helplines" },
     { name: "About Us", path: "/about" },
-    { name: "Contact Us", path: "/contact" },
-    { name: "Login as NGO", path: "/about" },
-    { name: "NGO Dashboard", path: "/ngo-dashboard" },
+    { name: "Contact Us", path: "/contact" }
   ];
 
   const renderLinks = () => {
@@ -39,7 +47,7 @@ const FeminineNavbar = () => {
       return (
         <Link
           to="/ngo-dashboard"
-          className="px-2 lg:px-3 py-2 text-medium font-medium text-black hover:text-rose-600 transition-colors duration-300 ease-in-out font-bold"
+          className="px-2 lg:px-3 py-2 text-medium text-black hover:text-rose-600 transition-colors duration-300 ease-in-out font-bold"
           style={{ fontFamily: "'Poppins', sans-serif" }}
         >
           NGO Dashboard
@@ -69,19 +77,26 @@ const FeminineNavbar = () => {
     ));
   };
 
+  useEffect(() => {
+      const storedLoginStatus = localStorage.getItem('isloggedIn');
+      const storedUserType = localStorage.getItem('userType');
+      const storedUserData = JSON.parse(localStorage.getItem('userData')); 
+      if (storedLoginStatus == 'true') {
+        setIsloggedIn(true);
+        setUserData({...storedUserData});
+      }
+    }
+    ,[]);
+
   return (
     <nav className="bg-gradient-to-r from-rose-200 to-rose-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-2">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-2">
         <div className="flex justify-between h-16">
           {/* Logo Section */}
           <motion.div className="flex items-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
             <div className="flex-shrink-0 flex items-center">
               {/* Logo SVG */}
               <img src={Logo} alt='logo' height="80" width='80'/>
-              
-                
-              
-              
             </div>
           </motion.div>
 
@@ -94,10 +109,15 @@ const FeminineNavbar = () => {
 
           {/* Right: Login/Signup or User Name */}
           <div className="hidden md:flex md:items-center">
-            {userType ? (
-              <span className="text-sm font-semibold text-rose-800" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                {userType === 'user' && `Hi, ${userName}`}
-              </span>
+            {isloggedIn ? (
+              <div className='flex items-center gap-3'>
+                  <span className="text-sm font-semibold text-rose-800" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                    {`Hi, ${userData?.name}`}
+                  </span>
+                  <motion.button whileHover={{ scale: 1.05 }} onClick={loggedOuthelper} className="px-4 py-2 text-sm  font-medium text-white bg-rose-600 rounded-full mr-3">
+                    logout
+                </motion.button>
+              </div>
             ) : (
               <>
                 <motion.button whileHover={{ scale: 1.05 }} className="px-4 py-2 text-sm font-medium text-white bg-rose-600 rounded-full mr-3">
@@ -133,7 +153,7 @@ const FeminineNavbar = () => {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {renderLinks()}
           </div>
-          {!userType && (
+          {!isloggedIn && (
             <div className="pt-4 pb-3 border-t border-pink-300">
               <div className="flex items-center justify-center space-x-3 px-5">
                 <motion.button className="w-full px-4 py-2 text-sm font-medium text-white bg-rose-800 rounded-full">

@@ -12,11 +12,13 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js";
 
 
 const createPost = async (req, res) => {
-    const { title, description,tag=[],anonymous,location} = req.body;
+    const { title, description,tag,anonymous,location} = req.body;
 
     if (!title || !description ) {
         throw new ApiError(400, "Title and description are required");
     }
+
+    console.log("tag",tag);
 
     const post = await Post.create({
         title,
@@ -49,12 +51,10 @@ const createPost = async (req, res) => {
           }
     }
 
-    console.log("media created");
     
 
     for(let i=0;i<tag.length;i++){
-        post.tag.push(tag[i]);
-        console.log("tag",tag[i]);
+        
         await post.save();
         console.log("post id is",post._id);
         console.log("post tag is",tag[i]);
@@ -62,23 +62,27 @@ const createPost = async (req, res) => {
             post_id: post._id,
             ngo_id: tag[i],
         });
-        console.log("tag created",tag[i]);
+    
         const ngo=await NGO.findOne({ngo_id:tag[i]});
         
         if(!ngo){
             throw new ApiError(404,"ngo not found please tag a right ngo")
         }
         const ngoTagMessage=generateNgoTagNotificationHTML(ngo.name,ngo.email,"");
-
-        // await sendMail({
-        //     to: ngo.email,
-        //     subject: "people tag you in a post",
-        //     text: ngoTagMessage,
-        // });
+       
+        try {
+            await sendMail({
+                email: ngo.email,
+                subject: "people tag you in a post",
+                messageHTML: ngoTagMessage || "some one tag you in a post",
+            });
+        
+        } catch (error) {
+            console.log("Error sending email:", error);
+        }
     }
     res.status(201).json(new ApiResponse(201, post, "Post created successfully"));
 }
-
 
 const getPost = async (req, res) => {
     const { post_id } = req.params;
