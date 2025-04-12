@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Mail, User, MessageSquare, CheckCircle } from 'lucide-react';
+import axiosInstance from '../helper/axiosinstance';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -67,7 +68,8 @@ const Contact = () => {
     
     try {
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      const response = await axiosInstance.post('/contactUs/create', formData);
+      console.log(response.data);
       
       // Here you would normally send the form data to your email service
       console.log("Form submitted:", formData);
@@ -254,7 +256,7 @@ const Contact = () => {
                   >
                     {/* Name Input */}
                     <motion.div className="mb-6" variants={itemVariants}>
-                      <label className="block text-gray-700 font-medium mb-2 flex items-center">
+                      <label className=" text-gray-700 font-medium mb-2 flex items-center">
                         <User className="mr-2 text-rose-800" size={18} />
                         Your Name
                       </label>
@@ -273,7 +275,7 @@ const Contact = () => {
                     
                     {/* Email Input */}
                     <motion.div className="mb-6" variants={itemVariants}>
-                      <label className="block text-gray-700 font-medium mb-2 flex items-center">
+                      <label className=" text-gray-700 font-medium mb-2 flex items-center">
                         <Mail className="mr-2 text-rose-800" size={18} />
                         Email Address
                       </label>
@@ -292,7 +294,7 @@ const Contact = () => {
                     
                     {/* Message Input */}
                     <motion.div className="mb-8" variants={itemVariants}>
-                      <label className="block text-gray-700 font-medium mb-2 flex items-center">
+                      <label className=" text-gray-700 font-medium mb-2 flex items-center">
                         <MessageSquare className="mr-2 text-rose-800" size={18} />
                         Your Message
                       </label>

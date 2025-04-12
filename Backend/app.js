@@ -9,6 +9,7 @@ import likeRouter from "./routes/like.route.js";
 import ngoRouter from './routes/ngo.route.js';
 import chatbotRouter from "./routes/chatbot.route.js";
 import tagRouter from "./routes/tag.route.js";
+import contactUsRouter from "./routes/contactUs.route.js";
 import morgan from 'morgan';
 
 const app = express();
@@ -34,6 +35,7 @@ app.use("/api/v1/ngo",ngoRouter);
 app.use("/api/v1/post",postRouter);
 app.use("/api/v1/chatbot",chatbotRouter);
 app.use("/api/v1/tag",tagRouter);
+app.use("/api/v1/contactUs",contactUsRouter);
 
 
 app.use("/api/v1/check", async (req, res) => {
